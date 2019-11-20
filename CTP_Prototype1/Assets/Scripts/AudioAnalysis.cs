@@ -6,15 +6,18 @@ public class AudioAnalysis : MonoBehaviour
 {
     AudioSource audioSource;
     AudioClip targetBPM;
+    Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        animator = GetComponent<Animator>();
         targetBPM = audioSource.clip;
-
-        int bpm = UniBpmAnalyzer.AnalyzeBpm(targetBPM);
-        Debug.Log("BPM is " + bpm);
+        animator.SetInteger("BPM", 0);
+        //int bpm = UniBpmAnalyzer.AnalyzeBpm(targetBPM);
+        //Debug.Log("BPM is " + bpm);
+        //animator.SetInteger("BPM", bpm);
     }
 
     void Update()
@@ -32,7 +35,7 @@ public class AudioAnalysis : MonoBehaviour
             outString += string.Format("| Bin {0} : {1}Hz : {2} |   ", i, i * hertzPerBin, curSpectrum[i]);
         }
 
-            //Debug.Log(outString);
-        
+        Debug.Log(outString);
+
     }
 }
