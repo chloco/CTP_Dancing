@@ -5,12 +5,16 @@ using UnityEngine;
 public class AudioAnalysis : MonoBehaviour
 {
     AudioSource audioSource;
+    AudioClip targetBPM;
 
     // Start is called before the first frame update
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        targetBPM = audioSource.clip;
 
+        int bpm = UniBpmAnalyzer.AnalyzeBpm(targetBPM);
+        Debug.Log("BPM is " + bpm);
     }
 
     void Update()
@@ -25,10 +29,10 @@ public class AudioAnalysis : MonoBehaviour
             string outString = "";
             for (int i = targetIndex - 3; i <= targetIndex + 3; i++)
             {
-                outString += string.Format("| Bin {0} : {1}Hz : {2} |   ", i, i * hertzPerBin, curSpectrum[i]);
-            }
+            outString += string.Format("| Bin {0} : {1}Hz : {2} |   ", i, i * hertzPerBin, curSpectrum[i]);
+        }
 
-            Debug.Log(outString);
+            //Debug.Log(outString);
         
     }
 }
