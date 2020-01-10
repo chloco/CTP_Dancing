@@ -35,7 +35,7 @@ public class AudioAnalysis : MonoBehaviour
             outString += string.Format("| Bin {0} : {1}Hz : {2} |   ", i, i * hertzPerBin, curSpectrum[i]);
         }
 
-        Debug.Log(outString);
+        //Debug.Log(outString);
 
     }
 }
