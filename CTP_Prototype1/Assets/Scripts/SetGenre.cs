@@ -6,20 +6,19 @@ using UnityEngine.UI;
 public class SetGenre : MonoBehaviour
 {
     public Text dropdownMenu;
-    DanceMoves dancemoves;
     public GameObject genrepicker;
-    public bool isSet;
+    public static bool isSet = false;
     // Start is called before the first frame update
     void Start()
     {
-        dropdownMenu = GameObject.FindGameObjectWithTag("Dropdown").GetComponent<Text>();
-        genrepicker = GameObject.FindGameObjectWithTag("genrepicker");
+        //dropdownMenu = GameObject.FindGameObjectWithTag("Dropdown").GetComponent<Text>();
+        //genrepicker = GameObject.FindGameObjectWithTag("genrepicker");
     }
 
     // Update is called once per frame
   public void selectGenre()
     {
-        dancemoves.genre = dropdownMenu.text;
+        DanceMoves.genre= dropdownMenu.text;
         genrepicker.SetActive(false);
         isSet = true;
 

@@ -19,6 +19,7 @@ public class SetSong : MonoBehaviour
         //animator.SetInteger("BPM", 0);
         AudioSource source = player.GetComponent<AudioSource>();
         source.clip = theSong;
+        DanceMoves.time = 0f;
         source.Play();
         int bpm = UniBpmAnalyzer.AnalyzeBpm(source.clip);
         Debug.Log("BPM is " + bpm);

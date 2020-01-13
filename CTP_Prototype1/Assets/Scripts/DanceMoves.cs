@@ -6,29 +6,40 @@ using UnityEngine;
 public class DanceMoves : MonoBehaviour
 {
     public AnimationClip[] animations;
-    public string genre;
+    public static string genre;
     public Animation animation;
-    // Start is called before the first frame update
+    public static float time; // Start is called before the first frame update
+    public AudioSource source;
     void Start()
     {
         animation = GetComponent<Animation>();
-        animation.clip = animations[1];
+        animation.clip = animations[10];
+        source = GetComponent<AudioSource>();
+        //animation.Play();;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (GetComponent<AudioSource>().isPlaying)
+        animation.Play();
+        if(SetGenre.isSet)
         {
-            float time = animation.clip.length;
-            
-            time = 0.5f * Time.deltaTime;
-            if (time == 0)
+            source.Play();
+        }
+        
+        while (GetComponent<AudioSource>().isPlaying)
+        {
+            time = 3f;
+
+            time -= 0.1f * Time.deltaTime;
+            if (time <= 0)
             {
-            animation.clip = animations[Random.Range(0, animations.Length)];
-            animation.Play();
+                animation.clip = animations[Random.Range(0, animations.Length)];
+                animation.Play();
                 time = animation.clip.length;
+
             }
+
         }
 
 

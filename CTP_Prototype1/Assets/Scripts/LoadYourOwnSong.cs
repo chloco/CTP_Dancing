@@ -15,7 +15,7 @@ public class LoadYourOwnSong : MonoBehaviour
     void Start()
     {
         song = GetComponent<AudioSource>();
-        genrepicker = GameObject.FindGameObjectWithTag("genrepicker");
+        //genrepicker = GameObject.FindGameObjectWithTag("genrepicker");
 
     }
 
@@ -80,11 +80,7 @@ public class LoadYourOwnSong : MonoBehaviour
         Debug.Log("BPM is " + bpm);
         //animator.SetInteger("BPM", bpm);
         genrepicker.SetActive(true);
-        if(genrepicker.GetComponent<SetGenre>().isSet)
-        {
-            song.Play();
-        }
-       
-       
+
+
     }
 }
