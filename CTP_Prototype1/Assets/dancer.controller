@@ -298,7 +298,7 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 3
     m_ConditionEvent: BPM
-    m_EventTreshold: 126
+    m_EventTreshold: 125
   - m_ConditionMode: 4
     m_ConditionEvent: BPM
     m_EventTreshold: 215
