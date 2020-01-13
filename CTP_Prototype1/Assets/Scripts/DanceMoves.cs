@@ -13,7 +13,7 @@ public class DanceMoves : MonoBehaviour
     void Start()
     {
         animation = GetComponent<Animation>();
-        animation.clip = animations[10];
+        //animation.clip = animations[10];
         source = GetComponent<AudioSource>();
         //animation.Play();;
     }
@@ -22,23 +22,23 @@ public class DanceMoves : MonoBehaviour
     void Update()
     {
         animation.Play();
-        if(SetGenre.isSet)
-        {
-            source.Play();
-        }
+        //if(SetGenre.isSet)
+        //{
+        //    source.Play();
+        //}
         
-        while (GetComponent<AudioSource>().isPlaying)
+        if (GetComponent<AudioSource>().isPlaying)
         {
-            time = 3f;
+            //time = 3f;
 
-            time -= 0.1f * Time.deltaTime;
-            if (time <= 0)
-            {
+            //time -= 0.1f * Time.deltaTime;
+            //if (time <= 0)
+            //{
                 animation.clip = animations[Random.Range(0, animations.Length)];
                 animation.Play();
                 time = animation.clip.length;
 
-            }
+            //}
 
         }
 
