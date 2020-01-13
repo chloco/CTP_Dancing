@@ -10,10 +10,13 @@ public class LoadYourOwnSong : MonoBehaviour
     string extension;
     string songName;
     AudioSource song;
+    public GameObject genrepicker;
     // Start is called before the first frame update
     void Start()
     {
         song = GetComponent<AudioSource>();
+        genrepicker = GameObject.FindGameObjectWithTag("genrepicker");
+
     }
 
     // Update is called once per frame
@@ -67,15 +70,21 @@ public class LoadYourOwnSong : MonoBehaviour
         //yield return www;
 
         GameObject player = GameObject.Find("Player");
-        Animator animator = player.GetComponent<Animator>();
-        animator.SetInteger("BPM", 0);
+        //Animator animator = player.GetComponent<Animator>();
+
+        //animator.SetInteger("BPM", 0);
        
         song.clip = www.GetAudioClip(false,false, AudioType.WAV);
         songName = song.clip.name;
         int bpm = UniBpmAnalyzer.AnalyzeBpm(song.clip);
         Debug.Log("BPM is " + bpm);
-        animator.SetInteger("BPM", bpm);
-        song.Play();
+        //animator.SetInteger("BPM", bpm);
+        genrepicker.SetActive(true);
+        if(genrepicker.GetComponent<SetGenre>().isSet)
+        {
+            song.Play();
+        }
+       
        
     }
 }
