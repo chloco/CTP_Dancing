@@ -80,6 +80,7 @@ public class LoadYourOwnSong : MonoBehaviour
         Debug.Log("BPM is " + bpm);
         //animator.SetInteger("BPM", bpm);
         genrepicker.SetActive(true);
+        song.Play();
 
 
     }
