@@ -8,18 +8,19 @@ public class DanceMoves : MonoBehaviour
     public AnimationClip[] animations;
     public static string genre;
     public Animation animation;
-    public static float time; // Start is called before the first frame update
+    public  float time = 3f; // Start is called before the first frame update
     public AudioSource source;
     void Start()
     {
+        time = 3f;
         animation = GetComponent<Animation>();
-        //animation.clip = animations[10];
+        animation.clip = animations[10];
         source = GetComponent<AudioSource>();
-        //animation.Play();;
+        animation.Play(); 
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         animation.Play();
         //if(SetGenre.isSet)
@@ -29,16 +30,14 @@ public class DanceMoves : MonoBehaviour
         
         if (GetComponent<AudioSource>().isPlaying)
         {
-            //time = 3f;
+            time -= Time.fixedDeltaTime;
+            if (time <= 0)
+            {
 
-            //time -= 0.1f * Time.deltaTime;
-            //if (time <= 0)
-            //{
                 animation.clip = animations[Random.Range(0, animations.Length)];
                 animation.Play();
                 time = animation.clip.length;
-
-            //}
+            }
 
         }
 
