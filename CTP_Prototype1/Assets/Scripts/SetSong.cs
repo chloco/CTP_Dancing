@@ -15,7 +15,7 @@ public class SetSong : MonoBehaviour
     public void setSong(AudioClip theSong)
     {
         GameObject player = GameObject.Find("Player");
-        //Animator animator = player.GetComponent<Animator>();
+        Animator animator = player.GetComponent<Animator>();
         //animator.SetInteger("BPM", 0);
         AudioSource source = player.GetComponent<AudioSource>();
         source.clip = theSong;
@@ -23,7 +23,7 @@ public class SetSong : MonoBehaviour
         source.Play();
         int bpm = UniBpmAnalyzer.AnalyzeBpm(source.clip);
         Debug.Log("BPM is " + bpm);
-        //animator.SetInteger("BPM", bpm);
+        animator.speed = bpm / 2;
     }
 
 }

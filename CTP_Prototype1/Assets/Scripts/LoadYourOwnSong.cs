@@ -70,15 +70,15 @@ public class LoadYourOwnSong : MonoBehaviour
         //yield return www;
 
         GameObject player = GameObject.Find("Player");
-        //Animator animator = player.GetComponent<Animator>();
+        Animator animator = player.GetComponent<Animator>();
 
         //animator.SetInteger("BPM", 0);
-       
+
         song.clip = www.GetAudioClip(false,false, AudioType.WAV);
         songName = song.clip.name;
         int bpm = UniBpmAnalyzer.AnalyzeBpm(song.clip);
         Debug.Log("BPM is " + bpm);
-        //animator.SetInteger("BPM", bpm);
+        animator.speed = bpm /2;
         genrepicker.SetActive(true);
         song.Play();
 

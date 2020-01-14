@@ -16,7 +16,9 @@ public class DanceMoves : MonoBehaviour
         animation = GetComponent<Animation>();
         animation.clip = animations[10];
         source = GetComponent<AudioSource>();
-        animation.Play(); 
+        animation.Play();
+        Animator animator = GetComponent<Animator>();
+        animator.speed = 0;
     }
 
     // Update is called once per frame
@@ -35,7 +37,7 @@ public class DanceMoves : MonoBehaviour
             if (time <= 0)
             {
 
-                animation.clip = animations[Random.Range(0, animations.Length)];
+                animation.clip = animations[Random.Range(0, animations.Length - 1)];
                 animation.Play();
                 time = animation.clip.length;
             }
