@@ -8,7 +8,7 @@ using UnityEngine;
 /// </summary>
 public class AudioSpectrum : MonoBehaviour
 {
-
+      
     private void Update()
     {
         // get the data
@@ -35,4 +35,18 @@ public class AudioSpectrum : MonoBehaviour
     // Unity fills this up for us
     private float[] m_audioSpectrum;
 
+     
+
+    float Loudness()
+    {   float nSamples = 1024;
+        float fMax;
+        float fLow;
+        float fHigh;
+
+        fLow = Mathf.Clamp(fLow, 20, fMax); // limit low...
+        fHigh = Mathf.Clamp(fHigh, fLow, fMax); // and high frequencies
+        var n1: int = Mathf.Floor(fLow * nSamples / fMax);
+        var n2: int = Mathf.Floor(fHigh * nSamples / fMax);
+        var sum: float = 0;
+    }
 }
