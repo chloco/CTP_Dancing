@@ -10,6 +10,7 @@ public class DanceMoves : MonoBehaviour
     public Animation animation;
     public static float time = 3f; // Start is called before the first frame update
     public AudioSource source;
+    public AnimatorOverrideController animationsOverride;
     void Start()
     {
         time = 0.5f;
@@ -36,14 +37,10 @@ public class DanceMoves : MonoBehaviour
             time -= Time.fixedDeltaTime;
             if (time <= 0)
             {
-
                 animation.clip = animations[Random.Range(0, animations.Length - 1)];
-                animation.Play();
+                animation.Play(); 
                 time = animation.clip.length;
             }
-
         }
-
-
     }
 }
