@@ -19,9 +19,8 @@ public class SetGenre : MonoBehaviour
     // Update is called once per frame
   public void selectGenre()
     {
-        DanceMoves.genre= dropdownMenu.text;
+        DanceMoves.genre = dropdownMenu.text;
         genrepicker.SetActive(false);
         isSet = true;
-
     }
 }

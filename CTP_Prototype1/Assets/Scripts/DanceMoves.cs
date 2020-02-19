@@ -44,3 +44,13 @@ public class DanceMoves : MonoBehaviour
         }
     }
 }
+
+public enum Genres
+{
+    Reggae,
+    Pop,
+    RnB,
+    Techno,
+    Rock,
+    Disco
+}
