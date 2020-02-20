@@ -14,10 +14,11 @@ public class AudioAnalysis : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
         targetBPM = audioSource.clip;
-        animator.SetInteger("BPM", 0);
+        //animator.SetInteger("BPM", 0);
         //int bpm = UniBpmAnalyzer.AnalyzeBpm(targetBPM);
         //Debug.Log("BPM is " + bpm);
         //animator.SetInteger("BPM", bpm);
+        animator.SetBool("MusicIsPlaying", false);
     }
 
     void Update()
