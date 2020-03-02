@@ -3612,6 +3612,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bodyPart: {fileID: 1111648248}
+  foot: {fileID: 1203984042}
   player: {fileID: 713817696}
 --- !u!114 &713817701
 MonoBehaviour:
@@ -4701,6 +4702,12 @@ CanvasRenderer:
 --- !u!1 &1111648248 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6167904293427101411, guid: 26186f3dd766a8443a5028bf0ef7ffd1,
+    type: 3}
+  m_PrefabInstance: {fileID: 459865971}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1203984042 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -7092056684981714454, guid: 26186f3dd766a8443a5028bf0ef7ffd1,
     type: 3}
   m_PrefabInstance: {fileID: 459865971}
   m_PrefabAsset: {fileID: 0}

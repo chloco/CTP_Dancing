@@ -11,6 +11,7 @@ public class Dance : MonoBehaviour
     public static int DanceSelect;
     int currentDance;
     public GameObject bodyPart;
+    public GameObject foot;
     public GameObject player;
 
     // Start is called before the first frame update
@@ -19,7 +20,7 @@ public class Dance : MonoBehaviour
         time = 0.5f;
         anim = GetComponent<Animator>();
        source = GetComponent<AudioSource>();
-
+       
     }
 
     // Update is called once per frame
@@ -28,7 +29,7 @@ public class Dance : MonoBehaviour
 
         if (anim.GetBool("TEST"))
         {
-
+            //anim.SetInteger("Genre", 1);
 
         }
         else
@@ -52,7 +53,7 @@ public class Dance : MonoBehaviour
                 anim.SetBool("MusicIsPlaying", true);
 
                 time -= Time.fixedDeltaTime;
-                Debug.Log(time);
+                //Debug.Log(time);
                 if (time <= 0)
                 {
                     while (DanceSelect == currentDance)
@@ -65,7 +66,7 @@ public class Dance : MonoBehaviour
                                 break;
                             case "Hip-Hop":
                                 anim.SetInteger("Genre", (int)Genres.HipHop);
-                                Dance.DanceSelect = (int)Random.Range(1f, 10.0f);
+                                Dance.DanceSelect = (int)Random.Range(0f, 12.0f);
                                 break;
                             case "Pop":
                                 anim.SetInteger("Genre", (int)Genres.Pop);
@@ -90,14 +91,16 @@ public class Dance : MonoBehaviour
                                 break;
                         }
                     }
-                    time = anim.GetCurrentAnimatorStateInfo(0).length;
+                    
                     //time = 5;
                     anim.SetInteger("DanceSelection", DanceSelect);
                     currentDance = DanceSelect;
-                    //player.transform.position = bodyPart.transform.position;
+                    time = anim.GetCurrentAnimatorStateInfo(0).length;
+                    Debug.Log("Change Moves" + DanceSelect);
+                    //player.transform.position = (bodyPart.transform.position - new Vector3(0,22,0));
                 }
 
-                Debug.Log(DanceSelect);
+                
             }
             else
             {
