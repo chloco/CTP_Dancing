@@ -58,6 +58,7 @@ public class Dance : MonoBehaviour
                 {
                     while (DanceSelect == currentDance)
                     {
+                        Debug.Log("Hit");
                         switch (Dance.genre)
                         {
                             case "Reggae":
