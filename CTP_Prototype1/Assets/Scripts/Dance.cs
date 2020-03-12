@@ -66,7 +66,7 @@ public class Dance : MonoBehaviour
                                 break;
                             case "Hip-Hop":
                                 anim.SetInteger("Genre", (int)Genres.HipHop);
-                                Dance.DanceSelect = (int)Random.Range(0f, 12.0f);
+                                Dance.DanceSelect = (int)Random.Range(0f, 14.0f);
                                 break;
                             case "Pop":
                                 anim.SetInteger("Genre", (int)Genres.Pop);
@@ -97,7 +97,7 @@ public class Dance : MonoBehaviour
                     currentDance = DanceSelect;
                     time = anim.GetCurrentAnimatorStateInfo(0).length;
                     Debug.Log("Change Moves" + DanceSelect);
-                    //player.transform.position = (bodyPart.transform.position - new Vector3(0,22,0));
+                    player.transform.position = (bodyPart.transform.position - new Vector3(0, 22, 0));
                 }
 
                 
