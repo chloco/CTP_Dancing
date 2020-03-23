@@ -13,6 +13,7 @@ public class Dance : MonoBehaviour
     public GameObject bodyPart;
     public GameObject foot;
     public GameObject player;
+    int bpm;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +21,7 @@ public class Dance : MonoBehaviour
         time = 0.5f;
         anim = GetComponent<Animator>();
        source = GetComponent<AudioSource>();
+        
        
     }
 
@@ -41,7 +43,7 @@ public class Dance : MonoBehaviour
                 //animator.SetInteger("BPM", 0);
                 Debug.Log("PLAY THE SONGS DUDE");
                 source.Play();
-                int bpm = UniBpmAnalyzer.AnalyzeBpm(source.clip);
+                bpm = UniBpmAnalyzer.AnalyzeBpm(source.clip);
                 anim.SetFloat("BPM", bpm / 2);
                 //anim.speed = bpm / 2;
                 SetGenre.isSet = false;
@@ -66,7 +68,7 @@ public class Dance : MonoBehaviour
                                 break;
                             case "Hip-Hop":
                                 anim.SetInteger("Genre", (int)Genres.HipHop);
-                                Dance.DanceSelect = (int)Random.Range(0f, 14.0f);
+                                Dance.DanceSelect = (int)Random.Range(0f, 15.0f);
                                 break;
                             case "Pop":
                                 anim.SetInteger("Genre", (int)Genres.Pop);
@@ -74,7 +76,7 @@ public class Dance : MonoBehaviour
                                 break;
                             case "RnB":
                                 anim.SetInteger("Genre", (int)Genres.RnB);
-                                Dance.DanceSelect = (int)Random.Range(1f, 7.0f);
+                                Dance.DanceSelect = (int)Random.Range(1f, 12.0f);
                                 break;
                             case "Techno":
                                 anim.SetInteger("Genre", (int)Genres.Techno);
@@ -97,14 +99,15 @@ public class Dance : MonoBehaviour
                     currentDance = DanceSelect;
                     time = anim.GetCurrentAnimatorStateInfo(0).length;
                     Debug.Log("Change Moves" + DanceSelect);
-                    player.transform.position = (bodyPart.transform.position - new Vector3(0, 22, 0));
+                    //player.transform.position = (bodyPart.transform.position - new Vector3(0, 22, 0));
                 }
 
                 
             }
             else
             {
-                anim.SetBool("MusicIsPlaying", true);
+                anim.SetBool("MusicIsPlaying", false);
+                bpm = 0;
             }
         }
     }
