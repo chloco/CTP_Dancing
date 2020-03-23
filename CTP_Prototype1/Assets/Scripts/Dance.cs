@@ -47,7 +47,7 @@ public class Dance : MonoBehaviour
                 anim.SetFloat("BPM", bpm / 2);
                 //anim.speed = bpm / 2;
                 SetGenre.isSet = false;
-                time = 0;
+                time = 3;
             }
 
             if (GetComponent<AudioSource>().isPlaying)
