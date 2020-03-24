@@ -64,7 +64,7 @@ public class Dance : MonoBehaviour
                         {
                             case "Reggae":
                                 anim.SetInteger("Genre", (int)Genres.Reggae);
-                                Dance.DanceSelect = (int)Random.Range(0f, 7.0f);
+                                Dance.DanceSelect = (int)Random.Range(0f, 10.0f);
                                 break;
                             case "Hip-Hop":
                                 anim.SetInteger("Genre", (int)Genres.HipHop);
@@ -72,7 +72,7 @@ public class Dance : MonoBehaviour
                                 break;
                             case "Pop":
                                 anim.SetInteger("Genre", (int)Genres.Pop);
-                                Dance.DanceSelect = (int)Random.Range(0f, 13.0f);
+                                Dance.DanceSelect = (int)Random.Range(0f, 15.0f);
                                 break;
                             case "RnB":
                                 anim.SetInteger("Genre", (int)Genres.RnB);
@@ -80,11 +80,11 @@ public class Dance : MonoBehaviour
                                 break;
                             case "Techno":
                                 anim.SetInteger("Genre", (int)Genres.Techno);
-                                Dance.DanceSelect = (int)Random.Range(0f, 2.0f);
+                                Dance.DanceSelect = (int)Random.Range(0f, 12.0f);
                                 break;
                             case "Rock":
                                 anim.SetInteger("Genre", (int)Genres.Rock);
-                                Dance.DanceSelect = (int)Random.Range(0f, 6.0f);
+                                Dance.DanceSelect = (int)Random.Range(0f, 10.0f);
                                 break;
                             case "Disco":
                                 anim.SetInteger("Genre", (int)Genres.Disco);
@@ -92,11 +92,11 @@ public class Dance : MonoBehaviour
                                 break;
                             case "Alternative":
                                 anim.SetInteger("Genre", (int)Genres.Alternative);
-                                Dance.DanceSelect = (int)Random.Range(0f, 2.0f);
+                                Dance.DanceSelect = (int)Random.Range(0f, 4.0f);
                                 break;
                             case "Rap":
                                 anim.SetInteger("Genre", (int)Genres.Rap);
-                                Dance.DanceSelect = (int)Random.Range(0f, 9.0f);
+                                Dance.DanceSelect = (int)Random.Range(0f, 14.0f);
                                 break;
                         }
                     }
