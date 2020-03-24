@@ -47,7 +47,7 @@ public class Dance : MonoBehaviour
                 anim.SetFloat("BPM", bpm / 2);
                 //anim.speed = bpm / 2;
                 SetGenre.isSet = false;
-                time = 3;
+                //time = 0.5f;
             }
 
             if (GetComponent<AudioSource>().isPlaying)
@@ -64,23 +64,23 @@ public class Dance : MonoBehaviour
                         {
                             case "Reggae":
                                 anim.SetInteger("Genre", (int)Genres.Reggae);
-                                Dance.DanceSelect = (int)Random.Range(1f, 7.0f);
+                                Dance.DanceSelect = (int)Random.Range(0f, 7.0f);
                                 break;
                             case "Hip-Hop":
                                 anim.SetInteger("Genre", (int)Genres.HipHop);
-                                Dance.DanceSelect = (int)Random.Range(0f, 15.0f);
+                                Dance.DanceSelect = (int)Random.Range(0f, 19.0f);
                                 break;
                             case "Pop":
                                 anim.SetInteger("Genre", (int)Genres.Pop);
-                                Dance.DanceSelect = (int)Random.Range(1f, 9.0f);
+                                Dance.DanceSelect = (int)Random.Range(0f, 12.0f);
                                 break;
                             case "RnB":
                                 anim.SetInteger("Genre", (int)Genres.RnB);
-                                Dance.DanceSelect = (int)Random.Range(1f, 12.0f);
+                                Dance.DanceSelect = (int)Random.Range(0f, 15.0f);
                                 break;
                             case "Techno":
                                 anim.SetInteger("Genre", (int)Genres.Techno);
-                                Dance.DanceSelect = (int)Random.Range(1f, 2.0f);
+                                Dance.DanceSelect = (int)Random.Range(0f, 2.0f);
                                 break;
                             case "Rock":
                                 anim.SetInteger("Genre", (int)Genres.Rock);
