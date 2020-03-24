@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 26186f3dd766a8443a5028bf0ef7ffd1
+guid: fdcef40bfcb6e19478626557c3b0d82e
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable:
@@ -35,11 +35,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: mixamo.com
+      name: Guitar Playing
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
-      lastFrame: 1
+      lastFrame: 148
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -99,13 +99,7 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
-  referencedClips:
-  - e28f880d2bf8c804c856ba368b762fd5
-  - 7eca575819d58354c91e89157f619b43
-  - 310a0c9b6476af54a9d06dad0ebd46c9
-  - 797cd64e3455c044ab6c25395b90eeb4
-  - 41986af2a07f97c4f95c358658a436f1
-  - a07ee75e61424ca4aa64286b46b77bfa
+  referencedClips: []
   importAnimation: 1
   copyAvatar: 0
   humanDescription:

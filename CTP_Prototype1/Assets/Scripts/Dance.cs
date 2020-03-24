@@ -68,11 +68,11 @@ public class Dance : MonoBehaviour
                                 break;
                             case "Hip-Hop":
                                 anim.SetInteger("Genre", (int)Genres.HipHop);
-                                Dance.DanceSelect = (int)Random.Range(0f, 19.0f);
+                                Dance.DanceSelect = (int)Random.Range(0f, 20.0f);
                                 break;
                             case "Pop":
                                 anim.SetInteger("Genre", (int)Genres.Pop);
-                                Dance.DanceSelect = (int)Random.Range(0f, 12.0f);
+                                Dance.DanceSelect = (int)Random.Range(0f, 13.0f);
                                 break;
                             case "RnB":
                                 anim.SetInteger("Genre", (int)Genres.RnB);
@@ -84,12 +84,19 @@ public class Dance : MonoBehaviour
                                 break;
                             case "Rock":
                                 anim.SetInteger("Genre", (int)Genres.Rock);
+                                Dance.DanceSelect = (int)Random.Range(0f, 6.0f);
                                 break;
                             case "Disco":
                                 anim.SetInteger("Genre", (int)Genres.Disco);
+                                Dance.DanceSelect = (int)Random.Range(0f, 3.0f);
                                 break;
                             case "Alternative":
                                 anim.SetInteger("Genre", (int)Genres.Alternative);
+                                Dance.DanceSelect = (int)Random.Range(0f, 2.0f);
+                                break;
+                            case "Rap":
+                                anim.SetInteger("Genre", (int)Genres.Rap);
+                                Dance.DanceSelect = (int)Random.Range(0f, 9.0f);
                                 break;
                         }
                     }
@@ -122,5 +129,6 @@ public enum Genres
     Techno,
     Rock,
     Disco,
-    Alternative
+    Alternative,
+    Rap
 }
