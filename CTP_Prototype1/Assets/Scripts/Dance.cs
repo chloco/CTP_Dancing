@@ -44,6 +44,7 @@ public class Dance : MonoBehaviour
                 Debug.Log("PLAY THE SONGS DUDE");
                 source.Play();
                 bpm = UniBpmAnalyzer.AnalyzeBpm(source.clip);
+                
                 anim.SetFloat("BPM", bpm / 2);
                 //anim.speed = bpm / 2;
                 SetGenre.isSet = false;
