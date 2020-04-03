@@ -81,7 +81,7 @@ public class Dance : MonoBehaviour
                                 break;
                             case "Techno":
                                 anim.SetInteger("Genre", (int)Genres.Techno);
-                                Dance.DanceSelect = (int)Random.Range(0f, 12.0f);
+                                Dance.DanceSelect = (int)Random.Range(0f, 13.0f);
                                 break;
                             case "Rock":
                                 anim.SetInteger("Genre", (int)Genres.Rock);
@@ -100,6 +100,10 @@ public class Dance : MonoBehaviour
                             case "Rap":
                                 anim.SetInteger("Genre", (int)Genres.Rap);
                                 Dance.DanceSelect = (int)Random.Range(0f, 14.0f);
+                                break;
+                            case "80sPop":
+                                anim.SetInteger("Genre", (int)Genres.EightiesPop);
+                                Dance.DanceSelect = (int)Random.Range(0f, 1.0f);
                                 break;
                         }
                     }
@@ -133,5 +137,6 @@ public enum Genres
     Rock,
     Disco,
     Alternative,
-    Rap
+    Rap,
+    EightiesPop
 }
