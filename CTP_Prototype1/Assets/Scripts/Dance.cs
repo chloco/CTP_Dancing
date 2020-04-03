@@ -44,7 +44,7 @@ public class Dance : MonoBehaviour
                 Debug.Log("PLAY THE SONGS DUDE");
                 source.Play();
                 bpm = UniBpmAnalyzer.AnalyzeBpm(source.clip);
-                
+                //anim.SetLayerWeight(anim.GetLayerIndex("Dance"), 0.3f);
                 anim.SetFloat("BPM", bpm / 2);
                 //anim.speed = bpm / 2;
                 SetGenre.isSet = false;
@@ -85,11 +85,13 @@ public class Dance : MonoBehaviour
                                 break;
                             case "Rock":
                                 anim.SetInteger("Genre", (int)Genres.Rock);
-                                Dance.DanceSelect = (int)Random.Range(0f, 10.0f);
+                                Dance.DanceSelect = (int)Random.Range(0f, 11.0f);
+                                anim.SetFloat("BPM", bpm);
                                 break;
                             case "Disco":
                                 anim.SetInteger("Genre", (int)Genres.Disco);
-                                Dance.DanceSelect = (int)Random.Range(0f, 3.0f);
+                                Dance.DanceSelect = (int)Random.Range(0f, 4.0f);
+                                anim.SetFloat("BPM", bpm);
                                 break;
                             case "Alternative":
                                 anim.SetInteger("Genre", (int)Genres.Alternative);
@@ -106,11 +108,11 @@ public class Dance : MonoBehaviour
                     anim.SetInteger("DanceSelection", DanceSelect);
                     currentDance = DanceSelect;
                     time = anim.GetCurrentAnimatorStateInfo(0).length;
-                    Debug.Log("Change Moves" + DanceSelect);
+                    //Debug.Log("Change Moves" + DanceSelect);
                     //player.transform.position = (bodyPart.transform.position - new Vector3(0, 22, 0));
                 }
 
-                
+
             }
             else
             {
