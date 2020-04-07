@@ -14,6 +14,7 @@ public class Dance : MonoBehaviour
     public GameObject foot;
     public GameObject player;
     int bpm;
+    public static bool isPlaying = false;
 
     // Start is called before the first frame update
     void Start()
@@ -51,7 +52,7 @@ public class Dance : MonoBehaviour
                 //time = 0.5f;
             }
 
-            if (GetComponent<AudioSource>().isPlaying)
+            if (Dance.isPlaying)
             {
                 anim.SetBool("MusicIsPlaying", true);
 
@@ -107,13 +108,13 @@ public class Dance : MonoBehaviour
                                 break;
                         }
                     }
-                    
+
                     //time = 5;
                     anim.SetInteger("DanceSelection", DanceSelect);
                     currentDance = DanceSelect;
-                    time = anim.GetCurrentAnimatorStateInfo(0).length;
+                    time = anim.GetCurrentAnimatorStateInfo(1).length;
                     //Debug.Log("Change Moves" + DanceSelect);
-                    //player.transform.position = (bodyPart.transform.position - new Vector3(0, 22, 0));
+                    
                 }
 
 

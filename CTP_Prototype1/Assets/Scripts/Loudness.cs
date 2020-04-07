@@ -6,22 +6,26 @@ public class Loudness : MonoBehaviour
 {
     public GameObject player;
      AudioSource audioSource;
-    float updateStep = 2f;
+    float updateStep = 4f;
     int sampleDataLength = 1024;
     private float currentUpdateTime = 0f;
     Animator anim;
     private float currWeight;
     private float clipLoudness;
     private float[] clipSampleData;
-    public float smoothTime;
-    private float yVelocity = 0.0F;
+    float smoothTime = 1f;
+    //private float yVelocity = 0.0F;
+    private float weightValue;
+    private float multiplyValue;
+    bool lerp = true;
 
 
     private void Start()
     {
         audioSource = player.GetComponent<AudioSource>();
         anim = player.GetComponent<Animator>();
-
+        weightValue = anim.GetLayerWeight(1);
+        lerp = true;
     }
 
     // Use this for initialization
@@ -33,36 +37,52 @@ public class Loudness : MonoBehaviour
         //    Debug.LogError(GetType() + ".Awake: there was no audioSource set.");
         //}
         clipSampleData = new float[sampleDataLength];
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-        currWeight = anim.GetLayerWeight(anim.GetLayerIndex("Dance"));
-        Debug.Log(currentUpdateTime);
-        if(player.GetComponent<AudioSource>().isPlaying)
-        {
-            currentUpdateTime += Time.deltaTime;
-        if (currentUpdateTime >= updateStep)
-        {
-            
-            currentUpdateTime = 0f;
-            audioSource.clip.GetData(clipSampleData, audioSource.timeSamples); //I read 1024 samples, which is about 80 ms on a 44khz stereo clip, beginning at the current sample position of the clip.
-            clipLoudness = 0f;
-            foreach (var sample in clipSampleData)
-            {
-                clipLoudness += Mathf.Abs(sample);
-            }
-            clipLoudness /= sampleDataLength; //clipLoudness is what you are looking for
-                //float startWeight = Mathf.SmoothDamp(currWeight, clipLoudness * 3, ref yVelocity, smoothTime);
-                //anim.SetLayerWeight(anim.GetLayerIndex("Dance"), startWeight);
-        }
-            
-            Debug.Log(clipLoudness * 2);
-        }
-        
 
+        if (Dance.isPlaying)
+        {
+
+            if (weightValue == multiplyValue)
+            {
+                lerp = true;
+            }
+
+            if (lerp)
+            {   
+                
+                audioSource.clip.GetData(clipSampleData, audioSource.timeSamples); //I read 1024 samples, which is about 80 ms on a 44khz stereo clip, beginning at the current sample position of the clip.
+                clipLoudness = 0f;
+                multiplyValue = 0f;
+                foreach (var sample in clipSampleData)
+                {
+                    clipLoudness += Mathf.Abs(sample);
+                }
+                clipLoudness /= sampleDataLength;
+
+                multiplyValue = clipLoudness * 4;
+                StartCoroutine(Dolerp());
+                   
+            }
+
+
+            if (weightValue > 1) weightValue = 1;
+            if (weightValue < 0) weightValue = 0;
+
+            anim.SetLayerWeight(anim.GetLayerIndex("Dance"), weightValue);
+        }
+        Debug.Log(multiplyValue);
+    }
+   
+    IEnumerator Dolerp()
+    {
+        weightValue = Mathf.Lerp(weightValue, multiplyValue, smoothTime * Time.deltaTime);
+                
+       yield return new WaitForSeconds(1f);
+        lerp = false; 
     }
 }
+

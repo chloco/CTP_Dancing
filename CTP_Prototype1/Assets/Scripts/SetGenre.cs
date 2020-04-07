@@ -25,7 +25,7 @@ public class SetGenre : MonoBehaviour
         Dance.genre = dropdownMenu.text;
         genrepicker.SetActive(false);
         isSet = true;
-     
+        Dance.isPlaying = true;
         Debug.Log(Dance.genre);
     }
 }
