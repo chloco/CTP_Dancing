@@ -553,6 +553,37 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 0
+--- !u!1101 &-7566573481721788224
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: MusicIsPlaying
+    m_EventTreshold: 0
+  - m_ConditionMode: 6
+    m_ConditionEvent: Genre
+    m_EventTreshold: 2
+  - m_ConditionMode: 6
+    m_ConditionEvent: DanceSelection
+    m_EventTreshold: 15
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 994715106684594647}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 2
+  m_TransitionOffset: 0
+  m_ExitTime: 0.75
+  m_HasExitTime: 1
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 0
 --- !u!1102 &-7564658343563004720
 AnimatorState:
   serializedVersion: 5
@@ -611,6 +642,33 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 0
+--- !u!1102 &-7260459000558316676
+AnimatorState:
+  serializedVersion: 5
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Talking
+  m_Speed: 0.0095
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 1
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: -203655887218126122, guid: 0e59bba2436886a4ba30e4a5ec48b5cf,
+    type: 3}
+  m_Tag: 
+  m_SpeedParameter: BPM
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1101 &-7217812567333028560
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -973,6 +1031,68 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 0
+--- !u!1101 &-5989120108574155399
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: MusicIsPlaying
+    m_EventTreshold: 0
+  - m_ConditionMode: 6
+    m_ConditionEvent: Genre
+    m_EventTreshold: 8
+  - m_ConditionMode: 6
+    m_ConditionEvent: DanceSelection
+    m_EventTreshold: 14
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: -7260459000558316676}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0.25
+  m_TransitionOffset: 0
+  m_ExitTime: 0.75
+  m_HasExitTime: 0
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
+--- !u!1101 &-5776597201731779310
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: MusicIsPlaying
+    m_EventTreshold: 0
+  - m_ConditionMode: 6
+    m_ConditionEvent: Genre
+    m_EventTreshold: 2
+  - m_ConditionMode: 6
+    m_ConditionEvent: DanceSelection
+    m_EventTreshold: 0
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 2210426314293777461}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0.25
+  m_TransitionOffset: 0
+  m_ExitTime: 0.75
+  m_HasExitTime: 1
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
 --- !u!1101 &-5747182493804916433
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -1170,6 +1290,37 @@ AnimatorStateTransition:
     m_EventTreshold: 15
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -1533654514195501444}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 2
+  m_TransitionOffset: 0
+  m_ExitTime: 0.75
+  m_HasExitTime: 1
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 0
+--- !u!1101 &-5050121932659731590
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: MusicIsPlaying
+    m_EventTreshold: 0
+  - m_ConditionMode: 6
+    m_ConditionEvent: Genre
+    m_EventTreshold: 4
+  - m_ConditionMode: 6
+    m_ConditionEvent: DanceSelection
+    m_EventTreshold: 13
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 762141797871409058}
   m_Solo: 0
   m_Mute: 0
   m_IsExit: 0
@@ -1715,37 +1866,6 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
---- !u!1101 &-3162558179540547411
-AnimatorStateTransition:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: MusicIsPlaying
-    m_EventTreshold: 0
-  - m_ConditionMode: 6
-    m_ConditionEvent: Genre
-    m_EventTreshold: 0
-  - m_ConditionMode: 6
-    m_ConditionEvent: DanceSelection
-    m_EventTreshold: 0
-  m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: 7996924876289894290}
-  m_Solo: 0
-  m_Mute: 0
-  m_IsExit: 0
-  serializedVersion: 3
-  m_TransitionDuration: 2
-  m_TransitionOffset: 0
-  m_ExitTime: 0.75
-  m_HasExitTime: 1
-  m_HasFixedDuration: 1
-  m_InterruptionSource: 0
-  m_OrderedInterruption: 1
-  m_CanTransitionToSelf: 0
 --- !u!1102 &-3122923367297662994
 AnimatorState:
   serializedVersion: 5
@@ -1773,6 +1893,37 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!1101 &-2987088543825095863
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: MusicIsPlaying
+    m_EventTreshold: 0
+  - m_ConditionMode: 6
+    m_ConditionEvent: Genre
+    m_EventTreshold: 6
+  - m_ConditionMode: 6
+    m_ConditionEvent: DanceSelection
+    m_EventTreshold: 4
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 7093738933288525363}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 2
+  m_TransitionOffset: 0
+  m_ExitTime: 0.75
+  m_HasExitTime: 1
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 0
 --- !u!1101 &-2783116659954596013
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -2178,6 +2329,37 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 0
+--- !u!1101 &-1383406583898077381
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: MusicIsPlaying
+    m_EventTreshold: 0
+  - m_ConditionMode: 6
+    m_ConditionEvent: Genre
+    m_EventTreshold: 0
+  - m_ConditionMode: 6
+    m_ConditionEvent: DanceSelection
+    m_EventTreshold: 10
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 7093738933288525363}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 2
+  m_TransitionOffset: 0
+  m_ExitTime: 0.75
+  m_HasExitTime: 0
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 0
 --- !u!1101 &-1293489043880571076
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -2228,6 +2410,37 @@ AnimatorStateTransition:
     m_EventTreshold: 9
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1498621074166601581}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 2
+  m_TransitionOffset: 0
+  m_ExitTime: 0.75
+  m_HasExitTime: 1
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 0
+--- !u!1101 &-971609463301053805
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: MusicIsPlaying
+    m_EventTreshold: 0
+  - m_ConditionMode: 6
+    m_ConditionEvent: Genre
+    m_EventTreshold: 3
+  - m_ConditionMode: 6
+    m_ConditionEvent: DanceSelection
+    m_EventTreshold: 22
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 762141797871409058}
   m_Solo: 0
   m_Mute: 0
   m_IsExit: 0
@@ -2659,6 +2872,60 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 0
+--- !u!1102 &762141797871409058
+AnimatorState:
+  serializedVersion: 5
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Dancing Running Man
+  m_Speed: 0.0085
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 1
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: -203655887218126122, guid: bfbcdfe4c1ade7043b2a936c7ddee412,
+    type: 3}
+  m_Tag: 
+  m_SpeedParameter: BPM
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
+--- !u!1102 &994715106684594647
+AnimatorState:
+  serializedVersion: 5
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Swing Dancing (1)
+  m_Speed: 0.0095
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 1
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: -203655887218126122, guid: ed29411b7f3b6c34c82fa4c3729665cd,
+    type: 3}
+  m_Tag: 
+  m_SpeedParameter: BPM
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1107 &1057321226495666956
 AnimatorStateMachine:
   serializedVersion: 5
@@ -2775,19 +3042,34 @@ AnimatorStateMachine:
     m_Position: {x: 1240, y: -130, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8019440438334866175}
-    m_Position: {x: 1210, y: -210, z: 0}
+    m_Position: {x: 1370, y: -510, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3837727096251171395}
-    m_Position: {x: 1190, y: -290, z: 0}
+    m_Position: {x: 1350, y: -570, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -1915392427069992001}
-    m_Position: {x: 1180, y: -360, z: 0}
+    m_Position: {x: 1330, y: -640, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8212037412778882132}
-    m_Position: {x: 1160, y: -470, z: 0}
+    m_Position: {x: 1320, y: -720, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8586564406689465186}
-    m_Position: {x: 1140, y: -540, z: 0}
+    m_Position: {x: 1260, y: -800, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 7093738933288525363}
+    m_Position: {x: 1220, y: -860, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: -7260459000558316676}
+    m_Position: {x: 1040, y: -920, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 762141797871409058}
+    m_Position: {x: 900, y: -940, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 994715106684594647}
+    m_Position: {x: 700, y: -950, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 2210426314293777461}
+    m_Position: {x: 500, y: -960, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: 2662645044476516857}
@@ -2856,7 +3138,6 @@ AnimatorStateMachine:
   - {fileID: -5747182493804916433}
   - {fileID: 1769333909081435257}
   - {fileID: -1511883881214309674}
-  - {fileID: -3162558179540547411}
   - {fileID: -3818258056577850426}
   - {fileID: 7839474412028931783}
   - {fileID: -360225669930508247}
@@ -2895,6 +3176,18 @@ AnimatorStateMachine:
   - {fileID: 1825676127250894539}
   - {fileID: -539022383826277808}
   - {fileID: 404328794071303173}
+  - {fileID: -2987088543825095863}
+  - {fileID: 6204515083985421979}
+  - {fileID: -1383406583898077381}
+  - {fileID: -5989120108574155399}
+  - {fileID: -5050121932659731590}
+  - {fileID: -971609463301053805}
+  - {fileID: 4266038405276853018}
+  - {fileID: 3674295372172864404}
+  - {fileID: -7566573481721788224}
+  - {fileID: 4242666501414942303}
+  - {fileID: 4276257272277664909}
+  - {fileID: -5776597201731779310}
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
@@ -3174,6 +3467,33 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 0
+--- !u!1102 &2210426314293777461
+AnimatorState:
+  serializedVersion: 5
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Chill listening to music
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: -203655887218126122, guid: 5cb2ded67051475458c90c3f152ebc8b,
+    type: 3}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1101 &2309838601458294887
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -3497,6 +3817,37 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!1101 &3674295372172864404
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: MusicIsPlaying
+    m_EventTreshold: 0
+  - m_ConditionMode: 6
+    m_ConditionEvent: Genre
+    m_EventTreshold: 6
+  - m_ConditionMode: 6
+    m_ConditionEvent: DanceSelection
+    m_EventTreshold: 5
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 994715106684594647}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0.25
+  m_TransitionOffset: 0
+  m_ExitTime: 0.75
+  m_HasExitTime: 1
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
 --- !u!1101 &3780596240731110303
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -3621,6 +3972,68 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 0
+--- !u!1101 &4242666501414942303
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: MusicIsPlaying
+    m_EventTreshold: 0
+  - m_ConditionMode: 6
+    m_ConditionEvent: Genre
+    m_EventTreshold: 7
+  - m_ConditionMode: 6
+    m_ConditionEvent: DanceSelection
+    m_EventTreshold: 5
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 994715106684594647}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0.25
+  m_TransitionOffset: 0
+  m_ExitTime: 0.75
+  m_HasExitTime: 1
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
+--- !u!1101 &4266038405276853018
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: MusicIsPlaying
+    m_EventTreshold: 0
+  - m_ConditionMode: 6
+    m_ConditionEvent: Genre
+    m_EventTreshold: 2
+  - m_ConditionMode: 6
+    m_ConditionEvent: DanceSelection
+    m_EventTreshold: 15
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 762141797871409058}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 2
+  m_TransitionOffset: 0
+  m_ExitTime: 0.75
+  m_HasExitTime: 1
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 0
 --- !u!1102 &4267268314999651654
 AnimatorState:
   serializedVersion: 5
@@ -3647,6 +4060,37 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!1101 &4276257272277664909
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: MusicIsPlaying
+    m_EventTreshold: 0
+  - m_ConditionMode: 6
+    m_ConditionEvent: Genre
+    m_EventTreshold: 9
+  - m_ConditionMode: 6
+    m_ConditionEvent: DanceSelection
+    m_EventTreshold: 2
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 994715106684594647}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0.25
+  m_TransitionOffset: 0
+  m_ExitTime: 0.75
+  m_HasExitTime: 1
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
 --- !u!1101 &4700933488329367827
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -4147,6 +4591,37 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 0
+--- !u!1101 &6204515083985421979
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: MusicIsPlaying
+    m_EventTreshold: 0
+  - m_ConditionMode: 6
+    m_ConditionEvent: Genre
+    m_EventTreshold: 7
+  - m_ConditionMode: 6
+    m_ConditionEvent: DanceSelection
+    m_EventTreshold: 4
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 7093738933288525363}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 2
+  m_TransitionOffset: 0
+  m_ExitTime: 0.75
+  m_HasExitTime: 1
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 0
 --- !u!1101 &6481666191859402293
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -4271,6 +4746,33 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 0
+--- !u!1102 &7093738933288525363
+AnimatorState:
+  serializedVersion: 5
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Jazz Dancing
+  m_Speed: 0.0095
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 1
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: -203655887218126122, guid: 974c5d840e436ab43968ca37435ec4cd,
+    type: 3}
+  m_Tag: 
+  m_SpeedParameter: BPM
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1101 &7287308494853288106
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -4801,7 +5303,7 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 2
   m_TransitionOffset: 0
   m_ExitTime: 0.75
   m_HasExitTime: 1

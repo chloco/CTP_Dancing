@@ -63,16 +63,16 @@ public class Loudness : MonoBehaviour
                 }
                 clipLoudness /= sampleDataLength;
 
-                multiplyValue = clipLoudness * 4;
-                StartCoroutine(Dolerp());
+                multiplyValue = clipLoudness * 5;
+                //StartCoroutine(Dolerp());
                    
             }
 
 
-            if (weightValue > 1) weightValue = 1;
-            if (weightValue < 0) weightValue = 0;
-
-            anim.SetLayerWeight(anim.GetLayerIndex("Dance"), weightValue);
+            //if (weightValue > 1) weightValue = 1;
+            //if (weightValue < 0) weightValue = 0;
+            StartCoroutine(Dolerp());
+            
         }
         Debug.Log(multiplyValue);
     }
@@ -80,9 +80,9 @@ public class Loudness : MonoBehaviour
     IEnumerator Dolerp()
     {
         weightValue = Mathf.Lerp(weightValue, multiplyValue, smoothTime * Time.deltaTime);
-                
-       yield return new WaitForSeconds(1f);
-        lerp = false; 
+        anim.SetLayerWeight(anim.GetLayerIndex("Dance"), weightValue);       
+       yield return new WaitForSeconds(5f);
+        //lerp = false; 
     }
 }
 

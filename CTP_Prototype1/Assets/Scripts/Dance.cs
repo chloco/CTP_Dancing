@@ -66,7 +66,7 @@ public class Dance : MonoBehaviour
                         {
                             case "Reggae":
                                 anim.SetInteger("Genre", (int)Genres.Reggae);
-                                Dance.DanceSelect = (int)Random.Range(0f, 10.0f);
+                                Dance.DanceSelect = (int)Random.Range(0f, 11.0f);
                                 break;
                             case "Hip-Hop":
                                 anim.SetInteger("Genre", (int)Genres.HipHop);
@@ -91,16 +91,17 @@ public class Dance : MonoBehaviour
                                 break;
                             case "Disco":
                                 anim.SetInteger("Genre", (int)Genres.Disco);
-                                Dance.DanceSelect = (int)Random.Range(0f, 4.0f);
+                                Dance.DanceSelect = (int)Random.Range(0f, 5.0f);
                                 anim.SetFloat("BPM", bpm);
                                 break;
                             case "Alternative":
                                 anim.SetInteger("Genre", (int)Genres.Alternative);
-                                Dance.DanceSelect = (int)Random.Range(0f, 4.0f);
+                                Dance.DanceSelect = (int)Random.Range(0f, 5.0f);
                                 break;
                             case "Rap":
                                 anim.SetInteger("Genre", (int)Genres.Rap);
-                                Dance.DanceSelect = (int)Random.Range(0f, 14.0f);
+                                Dance.DanceSelect = (int)Random.Range(0f, 15.0f);
+                                //anim.SetFloat("BPM", bpm);
                                 break;
                             case "80sPop":
                                 anim.SetInteger("Genre", (int)Genres.EightiesPop);
