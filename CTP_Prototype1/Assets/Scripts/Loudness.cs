@@ -42,9 +42,10 @@ public class Loudness : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+      
         if (Dance.isPlaying)
         {
+            
 
             if (weightValue == multiplyValue)
             {
@@ -68,13 +69,18 @@ public class Loudness : MonoBehaviour
                    
             }
 
+            //if (clipLoudness <= 0.01)
+            //{
+            //    Dance.isPlaying = false;
+            //}
+            if (weightValue > 1) weightValue = 1;
+            if (weightValue < 0.5) weightValue = 0.5f;
 
-            //if (weightValue > 1) weightValue = 1;
-            //if (weightValue < 0) weightValue = 0;
+           
             StartCoroutine(Dolerp());
             
         }
-        Debug.Log(multiplyValue);
+        //Debug.Log(multiplyValue);
     }
    
     IEnumerator Dolerp()
