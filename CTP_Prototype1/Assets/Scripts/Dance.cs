@@ -57,8 +57,16 @@ public class Dance : MonoBehaviour
                 anim.SetBool("MusicIsPlaying", true);
 
                 time -= Time.fixedDeltaTime;
+                if(source.clip.name.Contains("Macarena") || source.clip.name.Contains("macarena"))
+                {
+                    anim.SetInteger("SpecialSongNum", 1);
+                }
+                //if (source.clip.name.Contains("Macarena") || source.clip.name.Contains("Macarena"))
+                //{
+                //    anim.SetInteger("SpecialSongNum", 0);
+                //}
                 //Debug.Log(time);
-                if (time <= 0)
+                else if (time <= 0)
                 {
                     while (DanceSelect == currentDance)
                     {
@@ -66,46 +74,46 @@ public class Dance : MonoBehaviour
                         {
                             case "Reggae":
                                 anim.SetInteger("Genre", (int)Genres.Reggae);
-                                Dance.DanceSelect = (int)Random.Range(0f, 12.0f);
+                                Dance.DanceSelect = (int)Random.Range(0f, 16.0f);
                                 break;
                             case "Hip-Hop":
                                 anim.SetInteger("Genre", (int)Genres.HipHop);
-                                Dance.DanceSelect = (int)Random.Range(0f, 27.0f);
+                                Dance.DanceSelect = (int)Random.Range(0f, 31.0f);
                                 break;
                             case "Pop":
                                 anim.SetInteger("Genre", (int)Genres.Pop);
-                                Dance.DanceSelect = (int)Random.Range(0f, 20.0f);
+                                Dance.DanceSelect = (int)Random.Range(0f, 24.0f);
                                 break;
                             case "RnB":
                                 anim.SetInteger("Genre", (int)Genres.RnB);
-                                Dance.DanceSelect = (int)Random.Range(0f, 22.0f);
+                                Dance.DanceSelect = (int)Random.Range(0f, 28.0f);
                                 break;
                             case "Techno":
                                 anim.SetInteger("Genre", (int)Genres.Techno);
-                                Dance.DanceSelect = (int)Random.Range(0f, 19.0f);
+                                Dance.DanceSelect = (int)Random.Range(0f, 22.0f);
                                 break;
                             case "Rock":
                                 anim.SetInteger("Genre", (int)Genres.Rock);
-                                Dance.DanceSelect = (int)Random.Range(0f, 12.0f);
+                                Dance.DanceSelect = (int)Random.Range(0f, 17.0f);
                                 anim.SetFloat("BPM", bpm);
                                 break;
                             case "Disco":
                                 anim.SetInteger("Genre", (int)Genres.Disco);
-                                Dance.DanceSelect = (int)Random.Range(0f, 11.0f);
+                                Dance.DanceSelect = (int)Random.Range(0f, 17.0f);
                                 anim.SetFloat("BPM", bpm);
                                 break;
                             case "Alternative":
                                 anim.SetInteger("Genre", (int)Genres.Alternative);
-                                Dance.DanceSelect = (int)Random.Range(0f, 12.0f);
+                                Dance.DanceSelect = (int)Random.Range(0f, 21.0f);
                                 break;
                             case "Rap":
                                 anim.SetInteger("Genre", (int)Genres.Rap);
-                                Dance.DanceSelect = (int)Random.Range(0f, 19.0f);
+                                Dance.DanceSelect = (int)Random.Range(0f, 25.0f);
                                 //anim.SetFloat("BPM", bpm);
                                 break;
                             case "80sPop":
                                 anim.SetInteger("Genre", (int)Genres.EightiesPop);
-                                Dance.DanceSelect = (int)Random.Range(0f, 4.0f);
+                                Dance.DanceSelect = (int)Random.Range(0f, 8.0f);
                                 break;
                         }
                     }

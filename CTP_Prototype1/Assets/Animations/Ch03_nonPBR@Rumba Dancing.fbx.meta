@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 26186f3dd766a8443a5028bf0ef7ffd1
+guid: dd25505eda0392f48b6bc9d077d60b80
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable:
@@ -35,18 +35,18 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: mixamo.com
+      name: Rumba Dancing
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
-      lastFrame: 1
+      lastFrame: 71
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -99,20 +99,7 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
-  referencedClips:
-  - e28f880d2bf8c804c856ba368b762fd5
-  - 9615c2211f9e87442b1894eacbdc0b83
-  - 7eca575819d58354c91e89157f619b43
-  - 310a0c9b6476af54a9d06dad0ebd46c9
-  - 797cd64e3455c044ab6c25395b90eeb4
-  - 67ec567d2ce6040439c81e5cf31c34f7
-  - ce9da42a49af46e48b7568dfd393e979
-  - d3bd5826f20c4f741ba3778a8317b837
-  - 41986af2a07f97c4f95c358658a436f1
-  - a07ee75e61424ca4aa64286b46b77bfa
-  - a1b15a440d00e2442ae8ca7c1c40cb62
-  - 0c60cbe41ceb03f4d884f5ec801c3b2f
-  - edee5850382475945bda521a6119bf4c
+  referencedClips: []
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
