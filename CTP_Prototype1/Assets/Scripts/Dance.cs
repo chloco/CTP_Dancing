@@ -17,7 +17,7 @@ public class Dance : MonoBehaviour
     public GameObject bodyPart;
     public GameObject foot;
     public GameObject player;
-    int bpm;
+    public static int bpm;
     public static bool isPlaying = false;
 
     public RhythmAnalyzer analyzer;
@@ -215,7 +215,7 @@ public class Dance : MonoBehaviour
                                     break;
                             }
                         }
-
+                        rotate.cameraSpeed = -rotate.cameraSpeed;
                         //time = 5;
                         anim.SetInteger("DanceSelection", DanceSelect);
                         currentDance = DanceSelect;
@@ -227,13 +227,13 @@ public class Dance : MonoBehaviour
                         Debug.Log(time);
                     }
                     }
-
+                }
                 else
                 {
                     anim.SetBool("MusicIsPlaying", false);
                     bpm = 0;
                 }
-            }
+            
 
             prevTime = timeS;
         }
