@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using RhythmTool;
 public class Dance : MonoBehaviour
 {
     public static string genre;
     public static float time;
     Animator anim;
     AudioSource source;
+
     public static int DanceSelect;
     int currentDance;
     public GameObject bodyPart;
@@ -16,40 +17,66 @@ public class Dance : MonoBehaviour
     int bpm;
     public static bool isPlaying = false;
 
+    public RhythmAnalyzer analyzer;
+    public Beat
+    public RhythmData rhythmData;
+    private float prevTime;
+    private List<Beat> beats;
+
+    void Awake()
+    {
+        beats = new List<Beat>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         time = 0.5f;
         anim = GetComponent<Animator>();
-       source = GetComponent<AudioSource>();
-        
-       
+       source = GetComponent<AudioSource>();        
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        float timeS = source.time;
+
+        beats.Clear();
 
         if (anim.GetBool("TEST"))
         {
-            //anim.SetInteger("Genre", 1);
+            //play test animation
 
         }
         else
         {
-
-
             if (SetGenre.isSet)
             {
-                //animator.SetInteger("BPM", 0);
+             
                 Debug.Log("PLAY THE SONGS DUDE");
+          
+                rhythmData = analyzer.Analyze(source.clip);
+                
+            }
+            if(analyzer.initialized)
+            {
                 source.Play();
-                bpm = UniBpmAnalyzer.AnalyzeBpm(source.clip);
-                //anim.SetLayerWeight(anim.GetLayerIndex("Dance"), 0.3f);
-                anim.SetFloat("BPM", bpm / 2);
-                //anim.speed = bpm / 2;
+                Track<Beat> track = rhythmData.GetTrack<Beat>();
+                //Track<Beat> track = RhythmTool.trackBeat();
                 SetGenre.isSet = false;
-                //time = 0.5f;
+            }
+            rhythmData.GetFeatures<Beat>(beats, prevTime, timeS);
+
+            private void OnBeat(Beat beat)
+            {
+                bpm = Mathf.Round(beat.bpm * 10) / 10;
+            }
+            foreach (Beat beat in beats)
+            {
+              
+                bpm = (int)beat.bpm;
+                anim.SetFloat("BPM", bpm);
             }
 
             if (Dance.isPlaying)
@@ -61,11 +88,7 @@ public class Dance : MonoBehaviour
                 {
                     anim.SetInteger("SpecialSongNum", 1);
                 }
-                //if (source.clip.name.Contains("Macarena") || source.clip.name.Contains("Macarena"))
-                //{
-                //    anim.SetInteger("SpecialSongNum", 0);
-                //}
-                //Debug.Log(time);
+             
                 else if (time <= 0)
                 {
                     while (DanceSelect == currentDance)
@@ -138,6 +161,8 @@ public class Dance : MonoBehaviour
                 bpm = 0;
             }
         }
+
+        prevTime = timeS;
     }
 }
 
