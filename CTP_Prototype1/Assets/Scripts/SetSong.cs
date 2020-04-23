@@ -18,6 +18,8 @@ public class SetSong : MonoBehaviour
         
         GameObject player = GameObject.Find("Player");
         AudioSource source = player.GetComponent<AudioSource>();
+        player.GetComponent<Animator>().SetBool("MusicIsPlaying", false);
+        player.GetComponent<Animator>().SetFloat("BPM", 0);
         source.clip = theSong;
         Dance.time = 0f;
         GenrePicker.SetActive(true);

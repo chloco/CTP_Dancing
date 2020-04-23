@@ -17,6 +17,7 @@ public class Dance : MonoBehaviour
     public GameObject bodyPart;
     public GameObject foot;
     public GameObject player;
+    public GameObject hips;
     public static int bpm;
     public static bool isPlaying = false;
 
@@ -24,10 +25,18 @@ public class Dance : MonoBehaviour
     //public Beat;
     RhythmData rhythmData;
     private float prevTime;
+
     private List<Beat> beats;
+    List<Value> segments = new List<Value>();
+    Track<Value> segmentTrack;
     BeatTracker beatTracker;
     bool once;
     Track<Beat> beatTrack;
+    public static bool complete = false;
+
+    public RhythmEventProvider eventProvider;
+
+    public RhythmPlayer myRhythmPlayer;
 
     void Awake()
     {
@@ -43,15 +52,123 @@ public class Dance : MonoBehaviour
         analyzer = GetComponent<RhythmAnalyzer>();
         //rhythmData = GetComponent<RhythmData>();
         beatTracker = GetComponent<BeatTracker>();
+        myRhythmPlayer = GetComponent<RhythmPlayer>();
+        //eventProvider = myRhythmPlayer.targets[0];
+        eventProvider.Register<Value>(onSegment);
+    }
 
+    public void onSegment(Value segment)
+    {
+        Debug.Log("A beat occurred at " + segment.timestamp);
+    }
+
+    IEnumerator LoadFeatures()
+    {
+        segmentTrack = myRhythmPlayer.rhythmData.GetTrack<Value>("Segments");
+        segmentTrack.GetFeatures(segments, 0, source.clip.length);
+
+        yield return new WaitForSeconds(3f);
     }
 
     // Update is called once per frame
+    public void GetBeats()
+    {
+        myRhythmPlayer.rhythmData = rhythmData;
+
+        //= rhythmData.GetTrack<Value>("Segments");
+       
+        StartCoroutine(LoadFeatures());
+        bool isEmpty = !segments.Any();
+        if(isEmpty)
+        {
+            Debug.Log("I have nothing!");
+        }
+        else
+        {
+            Debug.Log("I have stuff!");
+        }
+
+
+       beatTrack = rhythmData.GetTrack<Beat>();
+        //Group beats by rounded BPM
+        Dictionary<int, List<Beat>> beatsByBPM = new Dictionary<int, List<Beat>>();
+
+            for (int i = 0; i < beatTrack.count; i++)
+            {
+                Beat beat = beatTrack[i];
+
+                int bpm = Mathf.RoundToInt(beat.bpm);
+
+                if (!beatsByBPM.ContainsKey(bpm))
+                    beatsByBPM.Add(bpm, new List<Beat>());
+
+                beatsByBPM[bpm].Add(beat);
+            }
+
+            //Find group with most beats
+            List<Beat> beats = beatsByBPM.Values.First();
+            int count = beats.Count;
+
+            foreach (var value in beatsByBPM.Values)
+            {
+                if (value.Count > count)
+                {
+                    count = value.Count;
+                    beats = value;
+                }
+            }
+
+            //Find the average BPM
+            float averageBPM = beats.Sum(b => b.bpm) / count;
+            float averageBeatLength = 60 / averageBPM;
+
+            //Find the most common offset rounded to x decimals
+            Dictionary<float, int> offsetCount = new Dictionary<float, int>();
+            int decimals = 3;
+
+            foreach (var beat in beats)
+            {
+                float offset = (float)Math.Round(beat.timestamp % averageBeatLength, decimals);
+
+                if (offsetCount.ContainsKey(offset))
+                    offsetCount[offset]++;
+                else
+                    offsetCount.Add(offset, 1);
+            }
+
+            int n = 0;
+            float bestOffset = 0;
+
+            foreach (var item in offsetCount)
+            {
+                if (item.Value > n)
+                {
+                    n = item.Value;
+                    bestOffset = item.Key;
+                }
+            }
+            
+            Debug.Log("Average BPM: " + averageBPM);
+            //Debug.Log("Best offset: " + bestOffset);
+            bpm = (int)averageBPM;
+            anim.SetFloat("BPM", bpm);
+        
+            anim.SetBool("MusicIsPlaying", true);
+           complete = true;
+            beatTrack = null;
+        }
+        
+
     void Update()
     {
+        if (hips.transform.rotation.y >= -90 && hips.transform.rotation.y <= 180)
+        {
+            //Debug.Log("backward");
+        }
         float timeS = source.time;
 
         beats.Clear();
+       
 
         if (anim.GetBool("TEST"))
         {
@@ -61,104 +178,32 @@ public class Dance : MonoBehaviour
         else
         {
             if (SetGenre.isSet)
-            {
+            {   
+                complete = false;
                 isPlaying = true;
                 rhythmData = null;
                 rhythmData = analyzer.Analyze(source.clip);
-
                 Debug.Log(source.clip.name);
-                Debug.Log("PLAY THE SONGS DUDE");
+                
+
+                //Debug.Log("PLAY THE SONGS DUDE");
                 source.Play();
                 SetGenre.isSet = false;
 
             }
+            
+            if(analyzer.initialized && !complete)
+            {
+                GetBeats();
+                
 
-          
-            //rhythmData.GetFeatures<Beat>(beats, prevTime, timeS);
-
-            //private void OnBeat(Beat beat)
-            //{
-            //    bpm = Mathf.Round(beat.bpm * 10) / 10;
-            //}
-            //foreach (Beat beat in beats)
-            //{
-
-
-            //}
+            }
 
             if (Dance.isPlaying)
             {
-                if (analyzer.initialized)
-                {
-                    beatTrack = rhythmData.GetTrack<Beat>();
-
-                    //Group beats by rounded BPM
-                    Dictionary<int, List<Beat>> beatsByBPM = new Dictionary<int, List<Beat>>();
-
-                    for (int i = 0; i < beatTrack.count; i++)
-                    {
-                        Beat beat = beatTrack[i];
-
-                        int bpm = Mathf.RoundToInt(beat.bpm);
-
-                        if (!beatsByBPM.ContainsKey(bpm))
-                            beatsByBPM.Add(bpm, new List<Beat>());
-
-                        beatsByBPM[bpm].Add(beat);
-                    }
-
-                    //Find group with most beats
-                    List<Beat> beats = beatsByBPM.Values.First();
-                    int count = beats.Count;
-
-                    foreach (var value in beatsByBPM.Values)
-                    {
-                        if (value.Count > count)
-                        {
-                            count = value.Count;
-                            beats = value;
-                        }
-                    }
-
-                    //Find the average BPM
-                    float averageBPM = beats.Sum(b => b.bpm) / count;
-                    float averageBeatLength = 60 / averageBPM;
-
-                    //Find the most common offset rounded to x decimals
-                    Dictionary<float, int> offsetCount = new Dictionary<float, int>();
-                    int decimals = 3;
-
-                    foreach (var beat in beats)
-                    {
-                        float offset = (float)Math.Round(beat.timestamp % averageBeatLength, decimals);
-
-                        if (offsetCount.ContainsKey(offset))
-                            offsetCount[offset]++;
-                        else
-                            offsetCount.Add(offset, 1);
-                    }
-
-                    int n = 0;
-                    float bestOffset = 0;
-
-                    foreach (var item in offsetCount)
-                    {
-                        if (item.Value > n)
-                        {
-                            n = item.Value;
-                            bestOffset = item.Key;
-                        }
-                    }
-
-                    Debug.Log("Average BPM: " + averageBPM);
-                    Debug.Log("Best offset: " + bestOffset);
-                    bpm = (int)averageBPM;
-                    anim.SetFloat("BPM", bpm);
-                    anim.SetBool("MusicIsPlaying", true);
-
+                //onSegment(segments.);
                 
-
-                    time -= Time.fixedDeltaTime;
+                time -= Time.fixedDeltaTime;
                     if (source.clip.name.Contains("Macarena") || source.clip.name.Contains("macarena"))
                     {
                         anim.SetInteger("SpecialSongNum", 1);
@@ -223,10 +268,10 @@ public class Dance : MonoBehaviour
                         //anim.GetCurrentAnimatorStateInfo(anim.GetLayerIndex("Dance")).normalizedTime = 0.5f;
                         time = UnityEngine.Random.Range(0f, temp);
 
-                        Debug.Log("Change Moves" + DanceSelect);
-                        Debug.Log(time);
+                        //Debug.Log("Change Moves" + DanceSelect);
+                        //Debug.Log(time);
                     }
-                    }
+                    
                 }
                 else
                 {
@@ -240,6 +285,7 @@ public class Dance : MonoBehaviour
         }
 }
 
+//public 
 public enum Genres
 {
     Reggae,
