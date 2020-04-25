@@ -23,19 +23,19 @@ public class raycast : MonoBehaviour
             if (Physics.Raycast(ray, out hitInfo))
           {
             Debug.DrawLine(ray.origin, hitInfo.point, Color.red);
-            if (hitInfo.collider.tag == "BackwardWall")
+            if (hitInfo.collider.tag == "BackwardWall" && anim.GetInteger("DirectionFacing") != 0)
             {
                 anim.SetInteger("DirectionFacing", 2);
             }
-            if (hitInfo.collider.tag == "FrontWall")
+            if (hitInfo.collider.tag == "FrontWall" && anim.GetInteger("DirectionFacing") != 2)
             {
                 anim.SetInteger("DirectionFacing", 0);
             }
-            if (hitInfo.collider.tag == "LeftWall")
+            if (hitInfo.collider.tag == "LeftWall" && anim.GetInteger("DirectionFacing") != 3)
             {
                 anim.SetInteger("DirectionFacing", 1);
             }
-            if (hitInfo.collider.tag == "RightWall")
+            if (hitInfo.collider.tag == "RightWall" && anim.GetInteger("DirectionFacing") != 1)
             {
                 anim.SetInteger("DirectionFacing", 3);
             }
