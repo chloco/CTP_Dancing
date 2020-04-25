@@ -23,11 +23,11 @@ public class Dance : MonoBehaviour
 
     public RhythmAnalyzer analyzer;
     //public Beat;
-    RhythmData rhythmData;
+    RhythmData myRhythmData;
     private float prevTime;
 
     private List<Beat> beats;
-    List<Value> segments = new List<Value>();
+   
     Track<Value> segmentTrack;
     BeatTracker beatTracker;
     bool once;
@@ -38,10 +38,9 @@ public class Dance : MonoBehaviour
 
     public RhythmPlayer myRhythmPlayer;
 
-    void Awake()
-    {
-        beats = new List<Beat>();
-    }
+   
+    //public void onSegment(Value);
+
 
     // Start is called before the first frame update
     void Start()
@@ -54,32 +53,32 @@ public class Dance : MonoBehaviour
         beatTracker = GetComponent<BeatTracker>();
         myRhythmPlayer = GetComponent<RhythmPlayer>();
         //eventProvider = myRhythmPlayer.targets[0];
-        eventProvider.Register<Value>(onSegment);
+        //eventProvider.Register<Value>(onSegment);
     }
 
-    public void onSegment(Value segment)
+    private void onSegment(Value segment)
     {
-        Debug.Log("A beat occurred at " + segment.timestamp);
+        Debug.Log("A segment occurred at " + segment.timestamp);
     }
-
-    IEnumerator LoadFeatures()
+  void Awake()
     {
-        segmentTrack = myRhythmPlayer.rhythmData.GetTrack<Value>("Segments");
-        segmentTrack.GetFeatures(segments, 0, source.clip.length);
-
-        yield return new WaitForSeconds(3f);
+        beats = new List<Beat>();
+        eventProvider.Register<Value>(onSegment, "Segments");
     }
+
 
     // Update is called once per frame
     public void GetBeats()
     {
-        myRhythmPlayer.rhythmData = rhythmData;
-
-        //= rhythmData.GetTrack<Value>("Segments");
-       
-        StartCoroutine(LoadFeatures());
-        bool isEmpty = !segments.Any();
-        if(isEmpty)
+        List<Value> segments = new List<Value>();
+        myRhythmPlayer.rhythmData = myRhythmData;
+        //segmentTrack = myRhythmData.GetTrack<Value>("Segments");
+        ////= rhythmData.GetTrack<Value>("Segments");               
+        //segmentTrack.GetFeatures(segments, 0, source.clip.length);
+        
+     
+  bool isEmpty = !segments.Any();
+        if (isEmpty)
         {
             Debug.Log("I have nothing!");
         }
@@ -89,7 +88,7 @@ public class Dance : MonoBehaviour
         }
 
 
-       beatTrack = rhythmData.GetTrack<Beat>();
+       beatTrack = myRhythmData.GetTrack<Beat>();
         //Group beats by rounded BPM
         Dictionary<int, List<Beat>> beatsByBPM = new Dictionary<int, List<Beat>>();
 
@@ -161,15 +160,19 @@ public class Dance : MonoBehaviour
 
     void Update()
     {
-        if (hips.transform.rotation.y >= -90 && hips.transform.rotation.y <= 180)
+        if(hips.transform.rotation.y >= 130 && hips.transform.rotation.y <= 270)
         {
-            //Debug.Log("backward");
+            Debug.Log("backward.");
         }
+
+
+
+
         float timeS = source.time;
 
         beats.Clear();
-       
 
+      
         if (anim.GetBool("TEST"))
         {
             //play test animation
@@ -181,8 +184,8 @@ public class Dance : MonoBehaviour
             {   
                 complete = false;
                 isPlaying = true;
-                rhythmData = null;
-                rhythmData = analyzer.Analyze(source.clip);
+                myRhythmData = null;
+                myRhythmData = analyzer.Analyze(source.clip);
                 Debug.Log(source.clip.name);
                 
 

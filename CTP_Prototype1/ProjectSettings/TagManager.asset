@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Dropdown
   - genrepicker
+  - BackwardWall
+  - LeftWall
+  - RightWall
+  - FrontWall
   layers:
   - Default
   - TransparentFX
