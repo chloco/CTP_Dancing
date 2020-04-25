@@ -70,22 +70,22 @@ public class Dance : MonoBehaviour
     // Update is called once per frame
     public void GetBeats()
     {
-        List<Value> segments = new List<Value>();
+        //List<Value> segments = new List<Value>();
         myRhythmPlayer.rhythmData = myRhythmData;
         //segmentTrack = myRhythmData.GetTrack<Value>("Segments");
         ////= rhythmData.GetTrack<Value>("Segments");               
         //segmentTrack.GetFeatures(segments, 0, source.clip.length);
         
      
-  bool isEmpty = !segments.Any();
-        if (isEmpty)
-        {
-            Debug.Log("I have nothing!");
-        }
-        else
-        {
-            Debug.Log("I have stuff!");
-        }
+  //bool isEmpty = !segments.Any();
+  //      if (isEmpty)
+  //      {
+  //          Debug.Log("I have nothing!");
+  //      }
+  //      else
+  //      {
+  //          Debug.Log("I have stuff!");
+  //      }
 
 
        beatTrack = myRhythmData.GetTrack<Beat>();
