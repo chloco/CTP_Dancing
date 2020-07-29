@@ -15,6 +15,7 @@ public class Dance : MonoBehaviour
     public static int DanceSelect;
     int currentDance;
     public GameObject bodyPart;
+    public GameObject camera;
     public GameObject foot;
     public GameObject player;
     public GameObject hips;
@@ -31,6 +32,8 @@ public class Dance : MonoBehaviour
     Track<Value> segmentTrack;
     BeatTracker beatTracker;
     bool once;
+    public static bool timerIsActive;
+    public static float songTime;
     Track<Beat> beatTrack;
     public static bool complete = false;
 
@@ -160,6 +163,18 @@ public class Dance : MonoBehaviour
 
     void Update()
     {
+        if(timerIsActive)
+        {
+            if (songTime > 0)
+                songTime -= Time.deltaTime;
+            else
+                timerIsActive = false;
+                songTime = 0;
+            rotate.cameraSpeed = 0;
+            ///////camera.transform.position
+        }
+
+
         if(hips.transform.rotation.y >= 130 && hips.transform.rotation.y <= 270)
         {
             Debug.Log("backward.");

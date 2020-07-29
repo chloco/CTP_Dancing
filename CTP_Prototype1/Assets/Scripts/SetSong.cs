@@ -21,6 +21,9 @@ public class SetSong : MonoBehaviour
         player.GetComponent<Animator>().SetBool("MusicIsPlaying", false);
         player.GetComponent<Animator>().SetFloat("BPM", 0);
         source.clip = theSong;
+        Dance.songTime = theSong.length;
+        Debug.Log(Dance.songTime);
+        Dance.timerIsActive = true;
         Dance.time = 0f;
         GenrePicker.SetActive(true);
     }
