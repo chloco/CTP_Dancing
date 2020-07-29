@@ -15,12 +15,13 @@ public class Dance : MonoBehaviour
     public static int DanceSelect;
     int currentDance;
     public GameObject bodyPart;
-    public GameObject camera;
+    public GameObject mainCamera;
     public GameObject foot;
     public GameObject player;
     public GameObject hips;
     public static int bpm;
     public static bool isPlaying = false;
+    Transform lookAt;
 
     public RhythmAnalyzer analyzer;
     //public Beat;
@@ -34,14 +35,15 @@ public class Dance : MonoBehaviour
     bool once;
     public static bool timerIsActive;
     public static float songTime;
+    public static bool reset;
     Track<Beat> beatTrack;
     public static bool complete = false;
-
+    public static Transform startPosition;
     public RhythmEventProvider eventProvider;
 
     public RhythmPlayer myRhythmPlayer;
-
-   
+    public static Transform currentPos;
+    float transitionTime;
     //public void onSegment(Value);
 
 
@@ -57,6 +59,8 @@ public class Dance : MonoBehaviour
         myRhythmPlayer = GetComponent<RhythmPlayer>();
         //eventProvider = myRhythmPlayer.targets[0];
         //eventProvider.Register<Value>(onSegment);
+        startPosition = mainCamera.transform;
+        timerIsActive = false;
     }
 
     private void onSegment(Value segment)
@@ -163,15 +167,27 @@ public class Dance : MonoBehaviour
 
     void Update()
     {
+       
         if(timerIsActive)
         {
             if (songTime > 0)
+            {
                 songTime -= Time.deltaTime;
+                Debug.Log(songTime);
+            }
             else
+                //currentPos = mainCamera.transform;
+                //lookAt = player.transform;
+                //Quaternion rotation = mainCamera.transform.rotation;
+                //mainCamera.transform.position = Vector3.Lerp(currentPos.position, startPosition.position, Time.deltaTime * 2);
+                //mainCamera.transform.LookAt(lookAt.position);
                 timerIsActive = false;
                 songTime = 0;
-            rotate.cameraSpeed = 0;
-            ///////camera.transform.position
+                anim.SetBool("MusicIsPlaying", false);
+                bpm = 0;
+            ///////mainCamera.transform.position
+            ///
+
         }
 
 
@@ -213,8 +229,6 @@ public class Dance : MonoBehaviour
             if(analyzer.initialized && !complete)
             {
                 GetBeats();
-                
-
             }
 
             if (Dance.isPlaying)

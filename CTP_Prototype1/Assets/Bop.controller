@@ -6585,6 +6585,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 2
     m_ConditionEvent: MusicIsPlaying
     m_EventTreshold: 0
+  - m_ConditionMode: 4
+    m_ConditionEvent: BPM
+    m_EventTreshold: 1
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 9124252567301831141}
   m_Solo: 0
@@ -9768,7 +9771,7 @@ AnimatorState:
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
   m_Mirror: 0
-  m_SpeedParameterActive: 0
+  m_SpeedParameterActive: 1
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
