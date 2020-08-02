@@ -66,6 +66,7 @@ public class Dance : MonoBehaviour
     private void onSegment(Value segment)
     {
         Debug.Log("A segment occurred at " + segment.timestamp);
+        
     }
   void Awake()
     {
@@ -203,6 +204,12 @@ public class Dance : MonoBehaviour
 
         beats.Clear();
 
+        //myRhythmData.GetFeatures<Beat>(beats, prevTime, time);
+
+        //foreach(Beat beat in beats)
+        //{
+        //    cameraControl.view = (int)UnityEngine.Random.Range(0f, 3.0f);
+        //}
       
         if (anim.GetBool("TEST"))
         {
