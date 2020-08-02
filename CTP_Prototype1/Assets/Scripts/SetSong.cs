@@ -15,7 +15,7 @@ public class SetSong : MonoBehaviour
     public void setSong(AudioClip theSong)
     {
         SetGenre.isSet = false;
-        
+        Dance.danceCamera = false;
         GameObject player = GameObject.Find("Player");
         AudioSource source = player.GetComponent<AudioSource>();
         player.GetComponent<Animator>().SetBool("MusicIsPlaying", false);

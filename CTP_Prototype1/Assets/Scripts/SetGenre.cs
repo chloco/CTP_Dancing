@@ -29,5 +29,6 @@ public class SetGenre : MonoBehaviour
         Debug.Log(Dance.songTime);
         Dance.timerIsActive = true;
         Debug.Log(Dance.genre);
+        
     }
 }

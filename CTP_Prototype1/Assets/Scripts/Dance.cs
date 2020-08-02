@@ -29,7 +29,7 @@ public class Dance : MonoBehaviour
     private float prevTime;
 
     private List<Beat> beats;
-   
+
     Track<Value> segmentTrack;
     BeatTracker beatTracker;
     bool once;
@@ -44,6 +44,7 @@ public class Dance : MonoBehaviour
     public RhythmPlayer myRhythmPlayer;
     public static Transform currentPos;
     float transitionTime;
+    public static bool danceCamera;
     //public void onSegment(Value);
 
 
@@ -52,7 +53,7 @@ public class Dance : MonoBehaviour
     {
         time = 0.5f;
         anim = GetComponent<Animator>();
-       source = GetComponent<AudioSource>();
+        source = GetComponent<AudioSource>();
         analyzer = GetComponent<RhythmAnalyzer>();
         //rhythmData = GetComponent<RhythmData>();
         beatTracker = GetComponent<BeatTracker>();
@@ -66,9 +67,9 @@ public class Dance : MonoBehaviour
     private void onSegment(Value segment)
     {
         Debug.Log("A segment occurred at " + segment.timestamp);
-        
+
     }
-  void Awake()
+    void Awake()
     {
         beats = new List<Beat>();
         eventProvider.Register<Value>(onSegment, "Segments");
@@ -83,92 +84,105 @@ public class Dance : MonoBehaviour
         //segmentTrack = myRhythmData.GetTrack<Value>("Segments");
         ////= rhythmData.GetTrack<Value>("Segments");               
         //segmentTrack.GetFeatures(segments, 0, source.clip.length);
-        
-     
-  //bool isEmpty = !segments.Any();
-  //      if (isEmpty)
-  //      {
-  //          Debug.Log("I have nothing!");
-  //      }
-  //      else
-  //      {
-  //          Debug.Log("I have stuff!");
-  //      }
 
 
-       beatTrack = myRhythmData.GetTrack<Beat>();
+        //bool isEmpty = !segments.Any();
+        //      if (isEmpty)
+        //      {
+        //          Debug.Log("I have nothing!");
+        //      }
+        //      else
+        //      {
+        //          Debug.Log("I have stuff!");
+        //      }
+
+
+        beatTrack = myRhythmData.GetTrack<Beat>();
         //Group beats by rounded BPM
         Dictionary<int, List<Beat>> beatsByBPM = new Dictionary<int, List<Beat>>();
 
-            for (int i = 0; i < beatTrack.count; i++)
-            {
-                Beat beat = beatTrack[i];
+        for (int i = 0; i < beatTrack.count; i++)
+        {
+            Beat beat = beatTrack[i];
 
-                int bpm = Mathf.RoundToInt(beat.bpm);
+            int bpm = Mathf.RoundToInt(beat.bpm);
 
-                if (!beatsByBPM.ContainsKey(bpm))
-                    beatsByBPM.Add(bpm, new List<Beat>());
+            if (!beatsByBPM.ContainsKey(bpm))
+                beatsByBPM.Add(bpm, new List<Beat>());
 
-                beatsByBPM[bpm].Add(beat);
-            }
-
-            //Find group with most beats
-            List<Beat> beats = beatsByBPM.Values.First();
-            int count = beats.Count;
-
-            foreach (var value in beatsByBPM.Values)
-            {
-                if (value.Count > count)
-                {
-                    count = value.Count;
-                    beats = value;
-                }
-            }
-
-            //Find the average BPM
-            float averageBPM = beats.Sum(b => b.bpm) / count;
-            float averageBeatLength = 60 / averageBPM;
-
-            //Find the most common offset rounded to x decimals
-            Dictionary<float, int> offsetCount = new Dictionary<float, int>();
-            int decimals = 3;
-
-            foreach (var beat in beats)
-            {
-                float offset = (float)Math.Round(beat.timestamp % averageBeatLength, decimals);
-
-                if (offsetCount.ContainsKey(offset))
-                    offsetCount[offset]++;
-                else
-                    offsetCount.Add(offset, 1);
-            }
-
-            int n = 0;
-            float bestOffset = 0;
-
-            foreach (var item in offsetCount)
-            {
-                if (item.Value > n)
-                {
-                    n = item.Value;
-                    bestOffset = item.Key;
-                }
-            }
-            
-            Debug.Log("Average BPM: " + averageBPM);
-            //Debug.Log("Best offset: " + bestOffset);
-            bpm = (int)averageBPM;
-            anim.SetFloat("BPM", bpm);
-        
-            anim.SetBool("MusicIsPlaying", true);
-           complete = true;
-            beatTrack = null;
+            beatsByBPM[bpm].Add(beat);
         }
-        
 
+        //Find group with most beats
+        List<Beat> beats = beatsByBPM.Values.First();
+        int count = beats.Count;
+
+        foreach (var value in beatsByBPM.Values)
+        {
+            if (value.Count > count)
+            {
+                count = value.Count;
+                beats = value;
+            }
+        }
+
+        //Find the average BPM
+        float averageBPM = beats.Sum(b => b.bpm) / count;
+        float averageBeatLength = 60 / averageBPM;
+
+        //Find the most common offset rounded to x decimals
+        Dictionary<float, int> offsetCount = new Dictionary<float, int>();
+        int decimals = 3;
+
+        foreach (var beat in beats)
+        {
+            float offset = (float)Math.Round(beat.timestamp % averageBeatLength, decimals);
+
+            if (offsetCount.ContainsKey(offset))
+                offsetCount[offset]++;
+            else
+                offsetCount.Add(offset, 1);
+        }
+
+        int n = 0;
+        float bestOffset = 0;
+
+        foreach (var item in offsetCount)
+        {
+            if (item.Value > n)
+            {
+                n = item.Value;
+                bestOffset = item.Key;
+            }
+        }
+
+        Debug.Log("Average BPM: " + averageBPM);
+        //Debug.Log("Best offset: " + bestOffset);
+        bpm = (int)averageBPM;
+        anim.SetFloat("BPM", bpm);
+
+        anim.SetBool("MusicIsPlaying", true);
+        complete = true;
+        beatTrack = null;
+    }
+
+    IEnumerator swapCam()
+    {
+        cameraControl.view = (int)UnityEngine.Random.Range(0f, 4.0f);
+        yield return new WaitForSeconds(bpm/60);
+    }
     void Update()
     {
        
+         if(danceCamera)
+        {
+            
+            StartCoroutine(swapCam());
+        }
+         else
+        {
+            cameraControl.view = 4;
+        }
         if(timerIsActive)
         {
             if (songTime > 0)
@@ -241,7 +255,7 @@ public class Dance : MonoBehaviour
             if (Dance.isPlaying)
             {
                 //onSegment(segments.);
-                
+                danceCamera = true;
                 time -= Time.fixedDeltaTime;
                     if (source.clip.name.Contains("Macarena") || source.clip.name.Contains("macarena"))
                     {
