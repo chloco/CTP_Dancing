@@ -22,6 +22,7 @@ public class Dance : MonoBehaviour
     public static int bpm;
     public static bool isPlaying = false;
     Transform lookAt;
+    bool first;
 
     public RhythmAnalyzer analyzer;
     //public Beat;
@@ -46,6 +47,7 @@ public class Dance : MonoBehaviour
     float transitionTime;
     public static bool danceCamera;
     //public void onSegment(Value);
+    bool go;
 
 
     // Start is called before the first frame update
@@ -61,7 +63,7 @@ public class Dance : MonoBehaviour
         //eventProvider = myRhythmPlayer.targets[0];
         //eventProvider.Register<Value>(onSegment);
         startPosition = mainCamera.transform;
-        timerIsActive = false;
+   
     }
 
     private void onSegment(Value segment)
@@ -166,45 +168,45 @@ public class Dance : MonoBehaviour
         beatTrack = null;
     }
 
+    
     IEnumerator swapCam()
     {
-        cameraControl.view = (int)UnityEngine.Random.Range(0f, 4.0f);
-        yield return new WaitForSeconds(bpm/60);
+      
+            cameraControl.view = (int)UnityEngine.Random.Range(1f, 5.0f);
+            Debug.Log((bpm / 2));
+            yield return new WaitForSeconds((bpm/10)/3);
+            go = false;
     }
-    void Update()
+
+    IEnumerator waitForCam()
     {
-       
-         if(danceCamera)
+
+        if(first)
         {
-            
+           cameraControl.view = 1;
+            yield return new WaitForSeconds(3f);
             StartCoroutine(swapCam());
         }
-         else
-        {
-            cameraControl.view = 4;
-        }
-        if(timerIsActive)
-        {
-            if (songTime > 0)
-            {
-                songTime -= Time.deltaTime;
-                Debug.Log(songTime);
-            }
-            else
-                //currentPos = mainCamera.transform;
-                //lookAt = player.transform;
-                //Quaternion rotation = mainCamera.transform.rotation;
-                //mainCamera.transform.position = Vector3.Lerp(currentPos.position, startPosition.position, Time.deltaTime * 2);
-                //mainCamera.transform.LookAt(lookAt.position);
-                timerIsActive = false;
-                songTime = 0;
-                anim.SetBool("MusicIsPlaying", false);
-                bpm = 0;
-            ///////mainCamera.transform.position
-            ///
+        
 
-        }
+    }
 
+    public void endSong()
+    {
+        danceCamera = false;
+        anim.SetBool("MusicIsPlaying", false);
+        bpm = 0;
+        timerIsActive = false;
+    }
+
+    void Update()
+    {
+
+        //myRhythmPlayer.SongEnded += endSong;
+
+        
+       
+ 
 
         if(hips.transform.rotation.y >= 130 && hips.transform.rotation.y <= 270)
         {
@@ -254,6 +256,46 @@ public class Dance : MonoBehaviour
 
             if (Dance.isPlaying)
             {
+                if (danceCamera && !go && !first)
+                {
+                    first = true;
+
+                    StartCoroutine(waitForCam());
+                    go = true;
+
+                }
+                else if (danceCamera && !go)
+                {
+                    go = true;
+                    StartCoroutine(waitForCam());
+                }
+                else if (!danceCamera)
+                {
+                    cameraControl.view = 0;
+                }
+
+                if (songTime > 0)
+                {
+                    songTime -= Time.deltaTime;
+                    Debug.Log(songTime);
+                }
+                else
+                {
+                    //currentPos = mainCamera.transform;
+                    //lookAt = player.transform;
+                    //Quaternion rotation = mainCamera.transform.rotation;
+                    //mainCamera.transform.position = Vector3.Lerp(currentPos.position, startPosition.position, Time.deltaTime * 2);
+                    //mainCamera.transform.LookAt(lookAt.position);
+                    songTime = 0;
+                    
+                    danceCamera = false;
+               
+                    isPlaying = false;
+                    
+                    ///////mainCamera.transform.position
+                    ///
+                }
+
                 //onSegment(segments.);
                 danceCamera = true;
                 time -= Time.fixedDeltaTime;
@@ -328,8 +370,12 @@ public class Dance : MonoBehaviour
                 }
                 else
                 {
+                if(anim.GetBool("MusicIsPlaying") == true)
+                {
                     anim.SetBool("MusicIsPlaying", false);
                     bpm = 0;
+                }
+                    
                 }
             
 

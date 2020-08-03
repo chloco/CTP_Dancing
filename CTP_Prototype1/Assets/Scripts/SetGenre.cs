@@ -26,7 +26,6 @@ public class SetGenre : MonoBehaviour
         genrepicker.SetActive(false);
         isSet = true;
         Dance.isPlaying = true;
-        Debug.Log(Dance.songTime);
         Dance.timerIsActive = true;
         Debug.Log(Dance.genre);
         

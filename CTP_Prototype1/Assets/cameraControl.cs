@@ -11,7 +11,7 @@ public class cameraControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentView = views[4]; 
+        //currentView = views[4]; 
     }
 
     // Update is called once per frame
