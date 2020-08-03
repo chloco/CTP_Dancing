@@ -14,7 +14,7 @@ public class rotate : MonoBehaviour
         player = GameObject.Find("Player");
     }
 
-    // Update is called once per frame
+    // Update is called once per frameanim.speed
     void Update()
     {
         if (player.GetComponent<Animator>().GetBool("MusicIsPlaying") == true)

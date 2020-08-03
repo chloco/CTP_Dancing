@@ -21,6 +21,10 @@ public class SetGenre : MonoBehaviour
     // Update is called once per frame
   public void selectGenre()
     {
+        GameObject player = GameObject.Find("Player");
+        player.GetComponent<Animator>().SetBool("idle", false);
+        player.GetComponent<Animator>().SetBool("MusicIsPlaying", true);
+
         animator = GetComponent<Animator>();
         Dance.genre = dropdownMenu.text;
         genrepicker.SetActive(false);

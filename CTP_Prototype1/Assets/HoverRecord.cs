@@ -39,7 +39,7 @@ public class HoverRecord : MonoBehaviour
         //anim[0].speed = 1;
         //Debug.Log(this.gameObject.name + "UP");
         //anim.Play(/*this.gameObject.name + "UP"*/);
-        anim.speed = 1;
+     
         anim.SetInteger("state", 1);
         yield return new WaitForSeconds(0.1f);
        
@@ -70,7 +70,7 @@ public class HoverRecord : MonoBehaviour
     {
         if(hovered)
         {
-            anim.speed = 1;
+        
             anim.SetInteger("state", 1);     
         }
 
