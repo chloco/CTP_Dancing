@@ -205,10 +205,20 @@ public class Dance : MonoBehaviour
         //myRhythmPlayer.SongEnded += endSong;
 
         
-       
- 
+       if(songTime <=0)
+        {
+            songTime = 0;
 
-        if(hips.transform.rotation.y >= 130 && hips.transform.rotation.y <= 270)
+            danceCamera = false;
+
+            anim.SetBool("MusicIsPlaying", false);
+            anim.SetBool("idle", true);
+            isPlaying = false;
+            cameraControl.view = 0;
+        }
+
+
+        if (hips.transform.rotation.y >= 130 && hips.transform.rotation.y <= 270)
         {
             Debug.Log("backward.");
         }
@@ -289,6 +299,7 @@ public class Dance : MonoBehaviour
                     songTime = 0;
                     
                     danceCamera = false;
+                    
                
                     isPlaying = false;
                     
