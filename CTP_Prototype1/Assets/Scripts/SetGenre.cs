@@ -31,6 +31,7 @@ public class SetGenre : MonoBehaviour
         isSet = true;
         Dance.isPlaying = true;
         Dance.timerIsActive = true;
+        Dance.danceCamera = true;
         Debug.Log(Dance.genre);
         
     }

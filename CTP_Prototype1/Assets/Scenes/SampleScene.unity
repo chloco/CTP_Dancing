@@ -1981,7 +1981,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 232556404}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 3a28cf4ec1ae8214e9e938e93349da57, type: 2}
   m_CullingMode: 0
@@ -9858,6 +9858,11 @@ PrefabInstance:
       propertyPath: theSong
       value: 
       objectReference: {fileID: 8300000, guid: 5912051854f78f5419e7fcc641d95be4, type: 3}
+    - target: {fileID: 5216805116671776300, guid: a58632a4cc7cbdd4a9a124be04e28263,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a58632a4cc7cbdd4a9a124be04e28263, type: 3}
 --- !u!1 &1202715243
@@ -9925,6 +9930,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bc8d3193c711a3458b7f751930b7534, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GenrePicker: {fileID: 2038358525}
+  songs:
+  - {fileID: 8300000, guid: 5912051854f78f5419e7fcc641d95be4, type: 3}
+  - {fileID: 8300000, guid: f86b44c5efff36243b75a2483c62eb10, type: 3}
+  - {fileID: 8300000, guid: 61642390573a6db4b8d4e825232d66c6, type: 3}
+  - {fileID: 8300000, guid: 1e7d97f4b40ec944393554c4105bcdb1, type: 3}
+  - {fileID: 8300000, guid: bc10dfacf6da45340abdc831fcd4b19a, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!4 &1206640392
 Transform:
   m_ObjectHideFlags: 0
@@ -11772,7 +11787,7 @@ PrefabInstance:
     - target: {fileID: 4270606013881270848, guid: a58632a4cc7cbdd4a9a124be04e28263,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 945584758419402835, guid: a58632a4cc7cbdd4a9a124be04e28263,
         type: 3}
@@ -11838,6 +11853,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 422.12387
+      objectReference: {fileID: 0}
+    - target: {fileID: 5216805116671776301, guid: a58632a4cc7cbdd4a9a124be04e28263,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a58632a4cc7cbdd4a9a124be04e28263, type: 3}
@@ -14009,6 +14029,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 422.12387
+      objectReference: {fileID: 0}
+    - target: {fileID: 5216805116671776301, guid: a58632a4cc7cbdd4a9a124be04e28263,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a58632a4cc7cbdd4a9a124be04e28263, type: 3}

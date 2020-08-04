@@ -171,11 +171,14 @@ public class Dance : MonoBehaviour
     
     IEnumerator swapCam()
     {
-      
+        if (danceCamera)
+        {
+
             cameraControl.view = (int)UnityEngine.Random.Range(1f, 5.0f);
             Debug.Log((bpm / 2));
-            yield return new WaitForSeconds((bpm/10)/3);
+            yield return new WaitForSeconds((bpm / 10) / 3);
             go = false;
+        }
     }
 
     IEnumerator waitForCam()
@@ -237,13 +240,7 @@ public class Dance : MonoBehaviour
         //    cameraControl.view = (int)UnityEngine.Random.Range(0f, 3.0f);
         //}
       
-        if (anim.GetBool("TEST"))
-        {
-            //play test animation
-
-        }
-        else
-        {
+        
             if (SetGenre.isSet)
             {   
                 complete = false;
@@ -324,7 +321,8 @@ public class Dance : MonoBehaviour
                                 case "Reggae":
                                     anim.SetInteger("Genre", (int)Genres.Reggae);
                                     Dance.DanceSelect = (int)UnityEngine.Random.Range(0f, 16.0f);
-                                    break;
+                                anim.SetFloat("BPM", bpm/2);
+                                break;
                                 case "Hip-Hop":
                                     anim.SetInteger("Genre", (int)Genres.HipHop);
                                     Dance.DanceSelect = (int)UnityEngine.Random.Range(0f, 33.0f);
@@ -391,7 +389,7 @@ public class Dance : MonoBehaviour
             
 
             prevTime = timeS;
-        }
+        
         }
 }
 
