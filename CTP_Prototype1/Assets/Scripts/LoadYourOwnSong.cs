@@ -74,6 +74,15 @@ public class LoadYourOwnSong : MonoBehaviour
 
         song.clip = www.GetAudioClip(false,false, AudioType.WAV);
         songName = song.clip.name;
+        SetGenre.isSet = false;
+        Dance.time = 0f;
+        Dance.danceCamera = false;
+        Dance.isPlaying = false;
+        Dance.songTime = song.clip.length;
+        GameObject player = GameObject.Find("Player");
+        AudioSource source = player.GetComponent<AudioSource>();
+        player.GetComponent<Animator>().SetBool("MusicIsPlaying", false);
+        player.GetComponent<Animator>().SetBool("idle", true);
         genrepicker.SetActive(true);
 
 
