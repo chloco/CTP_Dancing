@@ -5,13 +5,13 @@ using UnityEngine;
 public class HoverRecord : MonoBehaviour
 {
     bool hovered;
-
+    public static bool selected;
     Animator anim;
-    public AudioClip theSong;
-    public GameObject GenrePicker;
+  
 
     private void OnMouseExit()
     {
+
         if(hovered)
         {
             hovered = false;
@@ -39,7 +39,7 @@ public class HoverRecord : MonoBehaviour
         //anim[0].speed = 1;
         //Debug.Log(this.gameObject.name + "UP");
         //anim.Play(/*this.gameObject.name + "UP"*/);
-     
+    
         anim.SetInteger("state", 1);
         yield return new WaitForSeconds(0.1f);
        
@@ -59,16 +59,29 @@ public class HoverRecord : MonoBehaviour
         //{
         //    this.transform.Translate(new Vector3(-5,0,0) * Time.deltaTime * 10);
         //} 
+        if (selected)
+        {
+            yield return new WaitForSeconds(10f);
+            selected = false;
+        }
+        else
+        {
         anim.SetInteger("state", 2);
         //anim[this.gameObject.name + "HOVER"].speed = -1;
         //anim.Play(/*this.gameObject.name + "HOVER"*/);
         yield return new WaitForSeconds(1f);
+        }
+        hovered = false;
         anim.SetInteger("state", 0);
     }
     // Update is called once per frame
     void Update()
     {
-        if(hovered)
+        if(selected)
+        {
+            anim.SetInteger("state", 3);
+        }
+        else if(hovered)
         {
         
             anim.SetInteger("state", 1);     
