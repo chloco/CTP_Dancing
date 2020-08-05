@@ -63,7 +63,8 @@ public class mouseManager : MonoBehaviour
                             break;
                     case "Record5":
                         source.clip = songs[4];
-                        break;
+                            Dance.songTime = source.clip.length;
+                            break;
                     case "Record6":
                         source.clip = songs[5];
                         break;
